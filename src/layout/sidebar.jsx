@@ -1,0 +1,376 @@
+import {
+  Accordion,
+  AccordionButton,
+  AccordionItem,
+  AccordionPanel,
+  Avatar,
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  Center,
+  Divider,
+  Flex,
+  List,
+  ListIcon,
+  ListItem,
+  Menu,
+  MenuButton,
+  MenuList,
+  Switch,
+  Text,
+} from "@chakra-ui/react";
+import React from "react";
+import { Link } from "react-router-dom";
+import { AiFillBuild, AiFillHome, AiFillPieChart } from "react-icons/ai";
+import { RiCollageFill } from "react-icons/ri";
+import {
+  BsFiletypeDoc,
+  BsFillLightbulbFill,
+  BsInfoSquareFill,
+  BsPeopleFill,
+  BsFillChatDotsFill,
+} from "react-icons/bs";
+import {
+  FaCheckCircle,
+  FaDownload,
+  FaMicroscope,
+  FaDesktop,
+  FaTrophy,
+  FaBookOpen,
+  FaCalendarAlt,
+  FaPalette,
+  FaFileSignature,
+  FaRegClipboard,
+  FaBalanceScaleLeft,
+  FaFlask,
+  FaHandsHelping,
+  FaBookReader,
+  FaShieldAlt,
+  FaMapSigns,
+  FaFileAlt,
+  FaChartLine,
+  FaFilePowerpoint,
+  FaChalkboardTeacher,
+  FaFileContract,
+  FaCertificate,
+  FaAward,
+} from "react-icons/fa";
+import { LuFileInput } from "react-icons/lu";
+import { GiPartyFlags } from "react-icons/gi";
+import { MdWork, MdEventNote, MdMenuBook } from "react-icons/md";
+
+const menuItems = [
+  {
+    icon: AiFillHome,
+    text: "Main Dashboard",
+    path: "/",
+  },
+  {
+    icon: AiFillPieChart,
+    text: "Data Tables",
+    subMenu: [
+      {
+        text: "Doc Mahasiswa",
+        icon: RiCollageFill,
+        subMenuNested: [
+          { text: "Makrab", icon: GiPartyFlags, path: "/data/makrab" },
+          { text: "Magang", icon: MdWork },
+          {
+            text: "Sosialisasi",
+            icon: BsFillChatDotsFill,
+            path: "/data/sosialisasi",
+          },
+          { text: "Seminar", icon: MdEventNote },
+          { text: "Webinar", icon: FaDesktop },
+          {
+            text: "Kompetisi Game",
+            icon: FaTrophy,
+            path: "/data/kompetisi-game",
+          },
+          { text: "KAI", icon: RiCollageFill },
+        ],
+      },
+      {
+        text: "Doc Jurusan",
+        icon: AiFillBuild,
+        subMenuNested: [
+          { text: "Kurikulum", icon: FaBookOpen, path: "/data/kurikulum" },
+          { text: "Jadwal", icon: FaCalendarAlt },
+          { text: "Karya Mahasiswa", icon: FaPalette, path: "/data/karya" },
+        ],
+      },
+      { text: "Akreditasi", icon: BsFiletypeDoc, path: "/data/akreditasi" },
+      { text: "Sarana Prasarana", icon: BsFillLightbulbFill },
+      { text: "Informasi Dosen", icon: BsInfoSquareFill },
+      { text: "Informasi Mahasiswa", icon: BsInfoSquareFill },
+      {
+        text: "Penjaminan Mutu",
+        icon: FaCheckCircle,
+        subMenuNested: [
+          { text: "Formulir", icon: FaFileSignature, path: "/data/formulir" },
+          { text: "Standar", icon: FaRegClipboard, path: "/data/standar" },
+          {
+            text: "Kebijakan",
+            icon: FaBalanceScaleLeft,
+            path: "/data/kebijakan",
+          },
+          { text: "Manual", icon: MdMenuBook, path: "/data/manual" },
+        ],
+      },
+      {
+        text: "LPPM",
+        icon: FaMicroscope,
+        subMenuNested: [
+          { text: "Penelitian", icon: FaFlask, path: "/data/penelitian" },
+          {
+            text: "Pengabdian",
+            icon: FaHandsHelping,
+            path: "/data/pengabdian",
+          },
+          { text: "Jurnal", icon: FaBookReader, path: "/data/jurnal" },
+          { text: "HAKI", icon: FaShieldAlt, path: "/data/haki" },
+          { text: "Road Map", icon: FaMapSigns, path: "/data/roadmap" },
+          { text: "Pedoman", icon: FaFileAlt, path: "/data/pedoman" },
+          { text: "Renstra", icon: FaChartLine, path: "/data/renstra" },
+        ],
+      },
+      {
+        text: "Download",
+        icon: FaDownload,
+        subMenuNested: [
+          { text: "BPK", icon: FaFilePowerpoint, path: "/data/bpk" },
+          { text: "RPS", icon: FaChalkboardTeacher, path: "/data/rps" },
+          {
+            text: "Kontrak Kuliah",
+            icon: FaFileContract,
+            path: "/data/kontrak-kuliah",
+          },
+          {
+            text: "Sertifikat Dosen",
+            icon: FaCertificate,
+            path: "/data/sertifikat-dosen",
+          },
+          {
+            text: "Sertifikat Dokumen",
+            icon: FaCertificate,
+            path: "/data/sertifikat-documen",
+          },
+          { text: "Sertifikat", icon: FaAward, path: "/data/sertifikat" },
+        ],
+      },
+    ],
+  },
+  {
+    icon: LuFileInput,
+    text: "Input Datas",
+    subMenu: [
+      {
+        text: "Doc Mahasiswa",
+        icon: RiCollageFill,
+        subMenuNested: [
+          { text: "Makrab", icon: GiPartyFlags },
+          { text: "Magang", icon: MdWork },
+          { text: "Sosialisasi", icon: BsFillChatDotsFill },
+          { text: "Seminar", icon: MdEventNote },
+          { text: "Webinar", icon: FaDesktop },
+          { text: "Kompetisi Game", icon: FaTrophy },
+          { text: "KAI", icon: RiCollageFill },
+        ],
+      },
+      {
+        text: "Doc Jurusan",
+        icon: AiFillBuild,
+        subMenuNested: [
+          { text: "Kurikulum", icon: FaBookOpen },
+          { text: "Jadwal", icon: FaCalendarAlt },
+          { text: "Karya Mahasiswa", icon: FaPalette },
+        ],
+      },
+      { text: "Akreditasi", icon: BsFiletypeDoc },
+      { text: "Sarana Prasarana", icon: BsFillLightbulbFill },
+      { text: "Informasi Dosen", icon: BsInfoSquareFill },
+      { text: "Informasi Mahasiswa", icon: BsInfoSquareFill },
+      {
+        text: "Penjaminan Mutu",
+        icon: FaCheckCircle,
+        subMenuNested: [
+          { text: "Formulir", icon: FaFileSignature },
+          { text: "Standar", icon: FaRegClipboard },
+          { text: "Kebijakan", icon: FaBalanceScaleLeft },
+          { text: "Manual", icon: MdMenuBook },
+        ],
+      },
+      {
+        text: "LPPM",
+        icon: FaMicroscope,
+        subMenuNested: [
+          { text: "Penelitian", icon: FaFlask, path: "/input/data/penelitian" },
+          { text: "Pengabdian", icon: FaHandsHelping, path: "/input/data/pengabdian" },
+          { text: "Jurnal", icon: FaBookReader, path: "/input/data/jurnal" },
+          { text: "HAKI", icon: FaShieldAlt, path: "/input/data/haki" },
+          { text: "Road Map", icon: FaMapSigns, path: "/input/data/roadmap" },
+          { text: "Pedoman", icon: FaFileAlt, path: "/input/data/pedoman" },
+          { text: "Renstra", icon: FaChartLine, path: "/input/data/renstra" },
+        ],
+      },
+      {
+        text: "Download",
+        icon: FaDownload,
+        subMenuNested: [
+          { text: "BPK", icon: FaFilePowerpoint, path: "/input/data/bpk" },
+          { text: "RPS", icon: FaChalkboardTeacher, path: "/input/data/rps" },
+          {
+            text: "Kontrak Kuliah",
+            icon: FaFileContract,
+            path: "/input/data/kontrak-kuliah",
+          },
+          { text: "Sertifikat Dosen", icon: FaCertificate },
+          { text: "Sertifikat Dokumen", icon: FaCertificate },
+          { text: "Sertifikat", icon: FaAward },
+        ],
+      },
+    ],
+  },
+  {
+    icon: BsPeopleFill,
+    text: "Profil",
+    path: "/",
+  },
+];
+
+const Sidebar = ({ breadcrumbs, children }) => {
+  return (
+    <Box className="flex w-full h-screen bg-blue-100">
+      <Box className="w-[300px] bg-secondaryGray-300 px-5 py-7 overflow-y-auto">
+        <div className="text-center py-10">
+          <h1 className="text-2xl font-extrabold">MANAJEMEN INFORMATIKA</h1>
+        </div>
+        <Divider orientation="horizontal" />
+        <Flex direction="column" className="py-5 gap-3">
+          {menuItems.map((menuItem, index) =>
+            menuItem.subMenu?.length > 0 ? (
+              <Accordion key={index} allowMultiple>
+                <AccordionItem className="border-none">
+                  <AccordionButton className="p-0 hover:bg-transparent">
+                    <Flex className="gap-3 w-full border-r-4 border-brandTabs-300">
+                      <Center className="w-fit ">
+                        {<menuItem.icon className="text-brandTabs-300" />}
+                      </Center>
+                      <Center className="font-semibold flex-1 justify-start">
+                        <Text>{menuItem.text}</Text>
+                      </Center>
+                    </Flex>
+                  </AccordionButton>
+                  <AccordionPanel pb={4}>
+                    {menuItem.subMenu?.map((menuNested, index) =>
+                      menuNested.subMenuNested?.length > 0 ? (
+                        <Accordion allowMultiple key={index}>
+                          <AccordionItem className="border-none">
+                            <AccordionButton className="p-0 hover:bg-transparent my-2">
+                              <Flex className="gap-3 w-full">
+                                <Center className="w-fit ">
+                                  {
+                                    <menuNested.icon className="text-green-500" />
+                                  }
+                                </Center>
+                                <Center className="font-semibold flex-1 justify-start">
+                                  <Text>{menuNested.text}</Text>
+                                </Center>
+                              </Flex>
+                            </AccordionButton>
+                            <AccordionPanel>
+                              <List spacing={3}>
+                                {menuNested.subMenuNested?.map(
+                                  (subMenuItemNested, subIndexNested) => (
+                                    <ListItem key={subIndexNested}>
+                                      <ListIcon
+                                        as={subMenuItemNested.icon}
+                                        color="blue.500"
+                                      />
+                                      <Link to={subMenuItemNested.path}>
+                                        {subMenuItemNested.text}
+                                      </Link>
+                                    </ListItem>
+                                  )
+                                )}
+                              </List>
+                            </AccordionPanel>
+                          </AccordionItem>
+                        </Accordion>
+                      ) : (
+                        <Flex className="gap-3 w-full my-2" key={index}>
+                          <Center className="w-fit ">
+                            {<menuNested.icon className="text-green-500" />}
+                          </Center>
+                          <Center className="font-semibold flex-1 justify-start">
+                            <Link to={menuNested.path}>{menuNested.text}</Link>
+                          </Center>
+                        </Flex>
+                      )
+                    )}
+                  </AccordionPanel>
+                </AccordionItem>
+              </Accordion>
+            ) : (
+              <Flex
+                key={index}
+                className="gap-3 border-r-4 border-brandTabs-300"
+              >
+                <Center className="w-fit ">
+                  {<menuItem.icon className="text-brandTabs-300" />}
+                </Center>
+                <Center className="font-semibold flex-1 justify-start">
+                  <Link to={menuItem.path}>{menuItem.text}</Link>
+                </Center>
+              </Flex>
+            )
+          )}
+        </Flex>
+      </Box>
+      <Box className="bg-blue-100 flex-1 relative px-5 overflow-y-auto">
+        <Flex className="backdrop-blur-sm w-full  px-5 top-5 p-5 justify-between items-center">
+          <Box>
+            <Breadcrumb>
+              <BreadcrumbItem>
+                <Text>Pages</Text>
+              </BreadcrumbItem>
+              {Array.isArray(breadcrumbs) ? (
+                breadcrumbs?.map((item, index) => (
+                  <BreadcrumbItem key={index}>
+                    <Text>{item}</Text>
+                  </BreadcrumbItem>
+                ))
+              ) : (
+                <BreadcrumbItem>
+                  <Text>{breadcrumbs}</Text>
+                </BreadcrumbItem>
+              )}
+            </Breadcrumb>
+            <h2 className="text-4xl font-semibold">
+              {Array.isArray(breadcrumbs) ? breadcrumbs[breadcrumbs.length - 1] : breadcrumbs}
+            </h2>
+          </Box>
+          <Flex className="items-center gap-3">
+            <Switch />
+            <Menu>
+              <MenuButton>
+                <Avatar src="https://avatars3.githubusercontent.com/u/100200?s=460&v=4" />
+              </MenuButton>
+              <MenuList className="w-fit">
+                <Flex className="py-2 px-5 flex-col gap-3">
+                  <h2>👋 Hey, Adela</h2>
+                  <Divider />
+                  <Link>Profil Settings</Link>
+                  <p className="text-red-500 cursor-pointer">Logout</p>
+                </Flex>
+              </MenuList>
+            </Menu>
+          </Flex>
+        </Flex>
+        <Box className="pb-10 overflow-y-auto">{children}</Box>
+      </Box>
+    </Box>
+  );
+};
+
+export default Sidebar;
