@@ -28,15 +28,14 @@ import {
 import useToastMessages from "../../../hooks/useToastMessage";
 import EditAddModal from "../../../components/modal";
 
-const InputPenelitian = () => {
-  const apiUrl =
-    "https://knowledgeable-painted-guarantee.glitch.me/pedoman_lppm";
+const InputStandar = () => {
+  const apiUrl = "https://knowledgeable-painted-guarantee.glitch.me/standart";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [deletingItemId, setDeletingItemId] = useState(null);
   const [editingData, setEditingData] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { showSuccessToast, showErrorToast } = useToastMessages();
-  const breadcrumbs = ["Data Table", "Download", "Input Pedoman"];
+  const breadcrumbs = ["Data Table", "Penjaminan Mutu", "Input Standar"];
 
   const initialValues = {
     deskripsi: "",
@@ -109,7 +108,7 @@ const InputPenelitian = () => {
       <Flex className="h-fit flex-col gap-3">
         <Box className="bg-secondaryGray-300 rounded-xl py-5 px-10 flex items-center justify-between">
           <h2 className="flex items-center gap-2 font-semibold text-xl">
-            Input Pedoman
+            Input Standar
           </h2>
           <Button onClick={onOpen} colorScheme="green">
             TAMBAH
@@ -179,7 +178,7 @@ const InputPenelitian = () => {
       </Flex>
       {/* Modal ADD Data Dan Edit Data */}
       <EditAddModal
-        title={"Pedoman"}
+        title={"Standar"}
         isOpen={isOpen}
         onClose={() => {
           setEditingData(null);
@@ -196,4 +195,4 @@ const InputPenelitian = () => {
   );
 };
 
-export default InputPenelitian;
+export default InputStandar;

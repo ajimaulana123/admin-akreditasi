@@ -37,67 +37,67 @@ const Makrab = () => {
           </Box>
           <Divider />
           {year === 2022 ? (
-            <Box className="px-10 py-5 flex flex-wrap gap-3">
+            <Box className="px-10 py-5 grid xl:grid-cols-2 gap-2">
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1-ndyA7w5ZaZURvhJxOSTNIFunXfpolSy=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/17343n6ERQKCcvSK5_5u3eoz94nn0vNYn=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/19vmn1RZAZJcv3AhjMA-SuCLY-qqmACrd=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1s7SlTPdPstwprLeRsBgqml5xzzFG0h4Y=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1F_eiWRaWUS56uQ-eM06d6XpaQmMR3nXx=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1VAf3bBVQxds4yLZWYGPOfsOGG-aFnkN1=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
             </Box>
           ) : (
-            <Box className="px-10 py-5 flex flex-wrap gap-3">
+            <Box className="px-10 py-5 grid xl:grid-cols-2 gap-2">
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1y7EAvWngVbHdqCH0VtPz7E5Pp-jEW4wL=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1y5YBHvlWUrRkzbr1rpXmpy9gbtYwRipH=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1z9zv2kJt80pJCOJow8TJkysdld9TpQX6=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1xR7CO14mqgqFldbI4ewZ1SfKuVM7HI5u=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1xTcSYhdFNYIK1z7qUmjDIGMjOCkvmy9q=w1367-h888-iv1"
                 alt="Dan Abramov"
               />
               <Image
-                className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1wTZmgewlZmBeV2OUMKSE4MHmsnuv6Mo1=w1367-h888-iv1"
                 alt="Dan Abramov"
               />

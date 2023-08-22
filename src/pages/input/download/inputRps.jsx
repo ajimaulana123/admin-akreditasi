@@ -4,18 +4,8 @@ import {
   Box,
   Button,
   Flex,
-  FormControl,
-  FormErrorMessage,
   IconButton,
-  Input,
   Link,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Spinner,
   Table,
   TableCaption,
@@ -29,7 +19,6 @@ import {
 } from "@chakra-ui/react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import * as Yup from "yup";
-import { Form, Formik } from "formik";
 import {
   useGetData,
   usePostData,
@@ -37,6 +26,7 @@ import {
   useDeleteData,
 } from "../../../hooks/apiMethod";
 import useToastMessages from "../../../hooks/useToastMessage";
+import EditAddModal from "../../../components/modal";
 
 const InputRps = () => {
   const apiUrl = "https://knowledgeable-painted-guarantee.glitch.me/rps";
@@ -45,11 +35,17 @@ const InputRps = () => {
   const [editingData, setEditingData] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { showSuccessToast, showErrorToast } = useToastMessages();
-  const breadcrumbs = ["Data Table", "Download", "Input RPS"];
+  const breadcrumbs = ["Data Table", "Download", "Input BPK"];
+
   const initialValues = {
     deskripsi: "",
     link: "",
   };
+
+  const formControls = [
+    { name: "deskripsi", label: "Deskripsi" },
+    { name: "link", label: "Link Download" },
+  ];
 
   const validationSchema = Yup.object({
     deskripsi: Yup.string().required("Deskripsi Harus Diisi"),
@@ -112,7 +108,7 @@ const InputRps = () => {
       <Flex className="h-fit flex-col gap-3">
         <Box className="bg-secondaryGray-300 rounded-xl py-5 px-10 flex items-center justify-between">
           <h2 className="flex items-center gap-2 font-semibold text-xl">
-            Input Bpk
+            Input RPS
           </h2>
           <Button onClick={onOpen} colorScheme="green">
             TAMBAH
@@ -181,87 +177,20 @@ const InputRps = () => {
         </Box>
       </Flex>
       {/* Modal ADD Data Dan Edit Data */}
-      <Modal
+      <EditAddModal
+        title={"BPK"}
         isOpen={isOpen}
         onClose={() => {
           setEditingData(null);
           onClose();
         }}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>
-            {editingData ? "Edit Data RPS" : "Tambah Data RPS"}
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Formik
-              initialValues={editingData || initialValues}
-              validationSchema={validationSchema}
-              onSubmit={onSubmit}
-            >
-              {(formik) => (
-                <Form>
-                  <FormControl
-                    mb={4}
-                    isInvalid={
-                      formik.errors.deskripsi && formik.touched.deskripsi
-                    }
-                  >
-                    <label>Deskripsi</label>
-                    <Input
-                      type="text"
-                      name="deskripsi"
-                      onBlur={formik.handleBlur}
-                      onChange={formik.handleChange}
-                      value={
-                        formik.values.deskripsi ||
-                        (editingData && editingData.deskripsi) ||
-                        ""
-                      }
-                    />
-                    <FormErrorMessage>
-                      {formik.touched.deskripsi && formik.errors.deskripsi}
-                    </FormErrorMessage>
-                  </FormControl>
-
-                  <FormControl
-                    mb={4}
-                    isInvalid={formik.errors.link && formik.touched.link}
-                  >
-                    <label>Link Download</label>
-                    <Input
-                      type="text"
-                      name="link"
-                      onBlur={formik.handleBlur}
-                      onChange={formik.handleChange}
-                      value={
-                        formik.values.link ||
-                        (editingData && editingData.link) ||
-                        ""
-                      }
-                    />
-                    <FormErrorMessage>
-                      {formik.touched.link && formik.errors.link}
-                    </FormErrorMessage>
-                  </FormControl>
-
-                  <ModalFooter>
-                    <Button
-                      type="submit"
-                      colorScheme="green"
-                      mr={3}
-                      isLoading={isSubmitting}
-                    >
-                      {editingData ? "PERBARUI" : "TAMBAH"}
-                    </Button>
-                  </ModalFooter>
-                </Form>
-              )}
-            </Formik>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+        editingData={editingData}
+        onSubmit={onSubmit}
+        isSubmitting={isSubmitting}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        formControls={formControls}
+      />
     </Sidebar>
   );
 };

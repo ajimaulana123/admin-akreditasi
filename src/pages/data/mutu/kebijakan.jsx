@@ -18,7 +18,7 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { BsFillCalendarDateFill } from "react-icons/bs";
-import { FaBookOpen } from "react-icons/fa";
+import { FaBalanceScaleLeft, FaBookOpen } from "react-icons/fa";
 import axios from "axios";
 
 const Kebijakan = () => {
@@ -44,7 +44,7 @@ const Kebijakan = () => {
       <Flex className="h-fit flex-col gap-3">
         <Box className="bg-secondaryGray-300 rounded-xl py-5 px-10">
           <h2 className="flex items-center gap-2 font-semibold text-xl">
-            <FaBookOpen className="text-brandTabs-300" /> Standar
+            <FaBalanceScaleLeft className="text-brandTabs-300" /> Kebijakan
           </h2>
         </Box>
         <Box className="bg-secondaryGray-300 rounded-xl">

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export const useGetData = (url) => {
-  const [data, setData] = useState(null);
+  const [datas, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
@@ -20,7 +20,7 @@ export const useGetData = (url) => {
     fetchData();
   }, [url]);
 
-  return { data, isLoading, refetchData: fetchData };
+  return { datas, isLoading, refetchData: fetchData };
 };
 
 export const usePostData = () => {

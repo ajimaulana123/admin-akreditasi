@@ -18,6 +18,7 @@ import {
   MenuList,
   Switch,
   Text,
+  useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -186,7 +187,11 @@ const menuItems = [
           { text: "Karya Mahasiswa", icon: FaPalette },
         ],
       },
-      { text: "Akreditasi", icon: BsFiletypeDoc },
+      {
+        text: "Akreditasi",
+        icon: BsFiletypeDoc,
+        path: "/input/data/akreditasi",
+      },
       { text: "Sarana Prasarana", icon: BsFillLightbulbFill },
       { text: "Informasi Dosen", icon: BsInfoSquareFill },
       { text: "Informasi Mahasiswa", icon: BsInfoSquareFill },
@@ -194,10 +199,22 @@ const menuItems = [
         text: "Penjaminan Mutu",
         icon: FaCheckCircle,
         subMenuNested: [
-          { text: "Formulir", icon: FaFileSignature },
-          { text: "Standar", icon: FaRegClipboard },
-          { text: "Kebijakan", icon: FaBalanceScaleLeft },
-          { text: "Manual", icon: MdMenuBook },
+          {
+            text: "Formulir",
+            icon: FaFileSignature,
+            path: "/input/data/formulir",
+          },
+          {
+            text: "Standar",
+            icon: FaRegClipboard,
+            path: "/input/data/standar",
+          },
+          {
+            text: "Kebijakan",
+            icon: FaBalanceScaleLeft,
+            path: "/input/data/kebijakan",
+          },
+          { text: "Manual", icon: MdMenuBook, path: "/input/data/manual" },
         ],
       },
       {
@@ -205,7 +222,11 @@ const menuItems = [
         icon: FaMicroscope,
         subMenuNested: [
           { text: "Penelitian", icon: FaFlask, path: "/input/data/penelitian" },
-          { text: "Pengabdian", icon: FaHandsHelping, path: "/input/data/pengabdian" },
+          {
+            text: "Pengabdian",
+            icon: FaHandsHelping,
+            path: "/input/data/pengabdian",
+          },
           { text: "Jurnal", icon: FaBookReader, path: "/input/data/jurnal" },
           { text: "HAKI", icon: FaShieldAlt, path: "/input/data/haki" },
           { text: "Road Map", icon: FaMapSigns, path: "/input/data/roadmap" },
@@ -239,9 +260,15 @@ const menuItems = [
 ];
 
 const Sidebar = ({ breadcrumbs, children }) => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
-    <Box className="flex w-full h-screen bg-blue-100">
-      <Box className="w-[300px] bg-secondaryGray-300 px-5 py-7 overflow-y-auto">
+    <Box className="flex w-full h-screen">
+      <Box
+        className={`w-[300px] px-5 py-7 overflow-y-auto ${
+          colorMode === "dark" ? "bg-secondaryGray-900" : "bg-secondaryGray-300"
+        }`}
+      >
         <div className="text-center py-10">
           <h1 className="text-2xl font-extrabold">MANAJEMEN INFORMATIKA</h1>
         </div>
@@ -327,7 +354,11 @@ const Sidebar = ({ breadcrumbs, children }) => {
           )}
         </Flex>
       </Box>
-      <Box className="bg-blue-100 flex-1 relative px-5 overflow-y-auto">
+      <Box
+        className={`flex-1 relative px-5 overflow-y-auto ${
+          colorMode === "dark" ? "bg-brandTabs-900" : "bg-blue-100"
+        }`}
+      >
         <Flex className="backdrop-blur-sm w-full  px-5 top-5 p-5 justify-between items-center">
           <Box>
             <Breadcrumb>
@@ -347,11 +378,16 @@ const Sidebar = ({ breadcrumbs, children }) => {
               )}
             </Breadcrumb>
             <h2 className="text-4xl font-semibold">
-              {Array.isArray(breadcrumbs) ? breadcrumbs[breadcrumbs.length - 1] : breadcrumbs}
+              {Array.isArray(breadcrumbs)
+                ? breadcrumbs[breadcrumbs.length - 1]
+                : breadcrumbs}
             </h2>
           </Box>
           <Flex className="items-center gap-3">
-            <Switch />
+            <Switch
+              isChecked={colorMode === "dark"}
+              onChange={toggleColorMode}
+            />
             <Menu>
               <MenuButton>
                 <Avatar src="https://avatars3.githubusercontent.com/u/100200?s=460&v=4" />

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../../layout/sidebar";
 import {
   Box,
-  Button,
-  Divider,
   Flex,
   Image,
   Table,
@@ -11,46 +9,54 @@ import {
   TableContainer,
   Tbody,
   Td,
-  Tfoot,
   Th,
   Thead,
   Tr,
+  useColorMode,
 } from "@chakra-ui/react";
-import { BsFillCalendarDateFill } from "react-icons/bs";
 import { FaBookOpen } from "react-icons/fa";
 import axios from "axios";
+import { useGetData } from "../../../hooks/apiMethod";
 
 const Kurikulums = () => {
-  const [datas, setDatas] = useState(null);
-  const breadcrumbs = ["Data Table", "Doc Mahasiswa", "Kurikulum"];
-
-  useEffect(() => {
-    const fetchDatas = async () => {
-      try {
-        const { data } = await axios.get(
-          "https://knowledgeable-painted-guarantee.glitch.me/kurikulums"
-        );
-        setDatas(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchDatas();
-  }, []);
+  const apiUrl = "https://knowledgeable-painted-guarantee.glitch.me/kurikulums";
+  const breadcrumbs = ["Data Table", "Doc Jurusan", "Kurikulum"];
+  const { datas, isLoading } = useGetData(apiUrl);
+  const { colorMode } = useColorMode();
 
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
       <Flex className="h-fit flex-col gap-3">
-        <Box className="bg-secondaryGray-300 rounded-xl py-5 px-10">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl py-5 px-10`}
+        >
           <h2 className="flex items-center gap-2 font-semibold text-xl">
             <FaBookOpen className="text-brandTabs-300" /> Kurikulums
           </h2>
         </Box>
         <Box className="bg-secondaryGray-300 rounded-xl">
-          <TableContainer>
+          <TableContainer className="rounded-md">
             <Table variant="simple">
-              <TableCaption>Copyright Manajemen Informatika</TableCaption>
-              <Thead>
+              <TableCaption
+                className={`${
+                  colorMode === "dark"
+                    ? "bg-secondaryGray-900"
+                    : "bg-secondaryGray-300"
+                } m-0 py-5`}
+              >
+                Copyright Manajemen Informatika
+              </TableCaption>
+              <Thead
+                className={`${
+                  colorMode === "dark"
+                    ? "bg-secondaryGray-900"
+                    : "bg-secondaryGray-300"
+                } `}
+              >
                 <Tr>
                   <Th textAlign="center">No</Th>
                   <Th textAlign="center">ID</Th>
@@ -60,8 +66,20 @@ const Kurikulums = () => {
                   <Th textAlign="center">Semester</Th>
                 </Tr>
               </Thead>
-              <Tbody>
-                {datas ? (
+              <Tbody
+                className={`${
+                  colorMode === "dark"
+                    ? "bg-secondaryGray-900"
+                    : "bg-secondaryGray-300"
+                }`}
+              >
+                {isLoading ? (
+                  <Tr>
+                    <Td>
+                      <p className="px-10">Loading Data...</p>
+                    </Td>
+                  </Tr>
+                ) : (
                   datas.map((data, index) => {
                     return (
                       <Tr key={index}>
@@ -74,12 +92,6 @@ const Kurikulums = () => {
                       </Tr>
                     );
                   })
-                ) : (
-                  <Tr>
-                    <Td>
-                      <p className="px-10">Loading Data...</p>
-                    </Td>
-                  </Tr>
                 )}
               </Tbody>
             </Table>
