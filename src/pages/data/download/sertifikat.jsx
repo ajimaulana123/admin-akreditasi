@@ -16,38 +16,39 @@ import {
   Th,
   Thead,
   Tr,
+  useColorMode,
 } from "@chakra-ui/react";
 import { BsFillCalendarDateFill } from "react-icons/bs";
-import { FaAward, FaBookOpen } from "react-icons/fa";
+import { FaBookOpen, FaFilePowerpoint } from "react-icons/fa";
 import axios from "axios";
+import { useGetData } from "../../../hooks/apiMethod";
 
 const Sertifikat = () => {
-  const [datas, setDatas] = useState(null);
+  const apiUrl = "https://knowledgeable-painted-guarantee.glitch.me/sertifikat";
   const breadcrumbs = ["Data Table", "Download", "Sertifikat"];
-
-  useEffect(() => {
-    const fetchDatas = async () => {
-      try {
-        const { data } = await axios.get(
-          "https://knowledgeable-painted-guarantee.glitch.me/sertifikat"
-        );
-        setDatas(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchDatas();
-  }, []);
-
+  const { colorMode } = useColorMode();
+  const { datas, isLoading } = useGetData(apiUrl);
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
       <Flex className="h-fit flex-col gap-3">
-        <Box className="bg-secondaryGray-300 rounded-xl py-5 px-10">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl py-5 px-10`}
+        >
           <h2 className="flex items-center gap-2 font-semibold text-xl">
-            <FaAward className="text-brandTabs-300" /> Sertifikat
+            <FaFilePowerpoint className="text-brandTabs-300" /> Sertifikat
           </h2>
         </Box>
-        <Box className="bg-secondaryGray-300 rounded-xl">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl`}
+        >
           <TableContainer>
             <Table variant="simple">
               <TableCaption>Copyright Manajemen Informatika</TableCaption>
@@ -57,11 +58,19 @@ const Sertifikat = () => {
                     No
                   </Th>
                   <Th textAlign="start">Deskripsi</Th>
-                  <Th textAlign="center">Link Download</Th>
+                  <Th textAlign="center" width={100}>
+                    Link Download
+                  </Th>
                 </Tr>
               </Thead>
               <Tbody>
-                {datas ? (
+                {isLoading ? (
+                  <Tr>
+                    <Td>
+                      <p className="px-10">Loading Data...</p>
+                    </Td>
+                  </Tr>
+                ) : (
                   datas.map((data, index) => {
                     return (
                       <Tr key={index}>
@@ -75,12 +84,6 @@ const Sertifikat = () => {
                       </Tr>
                     );
                   })
-                ) : (
-                  <Tr>
-                    <Td>
-                      <p className="px-10">Loading Data...</p>
-                    </Td>
-                  </Tr>
                 )}
               </Tbody>
             </Table>

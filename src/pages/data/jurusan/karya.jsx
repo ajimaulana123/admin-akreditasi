@@ -22,12 +22,18 @@ import {
   Th,
   Thead,
   Tr,
+  useColorMode,
 } from "@chakra-ui/react";
-import { BsFiletypeDocx, BsFillCalendarDateFill, BsThreeDotsVertical } from "react-icons/bs";
+import {
+  BsFiletypeDocx,
+  BsFillCalendarDateFill,
+  BsThreeDotsVertical,
+} from "react-icons/bs";
 import { FaBookOpen, FaPalette } from "react-icons/fa";
 import axios from "axios";
+import { useGetData } from "../../../hooks/apiMethod";
 
-const CardKarya = ({data}) => {
+const CardKarya = ({ data }) => {
   function extractVideoId(url) {
     const match = url.match(/[?&]v=([^&]+)/);
     return match ? match[1] : null;
@@ -77,31 +83,26 @@ const CardKarya = ({data}) => {
       ) : null}
     </Card>
   );
-}
+};
 
 const Karya = () => {
-  const [datas, setDatas] = useState(null);
+  const apiUrl =
+    "https://knowledgeable-painted-guarantee.glitch.me/karya_mahasiswa";
   const [year, setYear] = useState(2022);
   const breadcrumbs = ["Data Table", "Doc Mahasiswa", "Karya Mahasiswa"];
-
-  useEffect(() => {
-    const fetchDatas = async () => {
-      try {
-        const { data } = await axios.get(
-          "https://knowledgeable-painted-guarantee.glitch.me/karya_mahasiswa"
-        );
-        setDatas(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchDatas();
-  }, []);
+  const { colorMode } = useColorMode();
+  const { datas, isLoading } = useGetData(apiUrl);
 
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
       <Flex className="h-fit flex-col gap-3">
-        <Box className="bg-secondaryGray-300 rounded-xl py-5 px-10">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl py-5 px-10`}
+        >
           <h2 className="flex items-center gap-2 font-semibold text-xl">
             <FaPalette className="text-brandTabs-300" /> Tahun :{" "}
           </h2>
@@ -122,7 +123,13 @@ const Karya = () => {
             </Button>
           </Box>
         </Box>
-        <Box className="bg-secondaryGray-300 rounded-xl">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl`}
+        >
           <Box className="px-10 py-3">
             <h1 className="text-xl font-semibold">
               Recap Karya Mahasiswa {year}
@@ -130,14 +137,12 @@ const Karya = () => {
           </Box>
           <Divider />
           <Box className="px-10 py-5 flex flex-wrap justify-center gap-3">
-            {datas ? (
-              datas.map((data, index) => {
-                return(
-                  <CardKarya key={index} data={data} />
-                )
-              })
-            ) : (
+            {isLoading ? (
               <Text>Loading....</Text>
+            ) : (
+              datas.map((data, index) => {
+                return <CardKarya key={index} data={data} />;
+              })
             )}
           </Box>
         </Box>

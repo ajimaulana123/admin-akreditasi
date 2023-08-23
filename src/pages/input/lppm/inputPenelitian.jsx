@@ -15,6 +15,7 @@ import {
   Th,
   Thead,
   Tr,
+  useColorMode,
   useDisclosure,
 } from "@chakra-ui/react";
 import { FaEdit, FaTrash } from "react-icons/fa";
@@ -36,7 +37,8 @@ const InputPenelitian = () => {
   const [editingData, setEditingData] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { showSuccessToast, showErrorToast } = useToastMessages();
-  const breadcrumbs = ["Data Table", "Download", "Input Penelitian"];
+  const {colorMode} = useColorMode()
+  const breadcrumbs = ["Input Data", "Download", "Input Penelitian"];
   
   const initialValues = {
     deskripsi: "",
@@ -53,7 +55,7 @@ const InputPenelitian = () => {
     link: Yup.string().required("Link Tidak Boleh Kosong"),
   });
 
-  const { data: fetchedData, isLoading, refetchData } = useGetData(apiUrl);
+  const { datas, isLoading, refetchData } = useGetData(apiUrl);
   const { postData } = usePostData();
   const { putData } = usePutData();
   const { deleteData } = useDeleteData();
@@ -107,7 +109,13 @@ const InputPenelitian = () => {
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
       <Flex className="h-fit flex-col gap-3">
-        <Box className="bg-secondaryGray-300 rounded-xl py-5 px-10 flex items-center justify-between">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl py-5 px-10 flex items-center justify-between`}
+        >
           <h2 className="flex items-center gap-2 font-semibold text-xl">
             Input Penelitian
           </h2>
@@ -115,7 +123,13 @@ const InputPenelitian = () => {
             TAMBAH
           </Button>
         </Box>
-        <Box className="bg-secondaryGray-300 rounded-xl">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl py-5 px-10`}
+        >
           <TableContainer>
             <Table variant="simple">
               <TableCaption>Copyright Manajemen Informatika</TableCaption>
@@ -141,7 +155,7 @@ const InputPenelitian = () => {
                     </Td>
                   </Tr>
                 ) : (
-                  fetchedData?.map((data, index) => (
+                  datas?.map((data, index) => (
                     <Tr key={index}>
                       <Td textAlign="center">{index + 1}</Td>
                       <Td>{data.deskripsi}</Td>

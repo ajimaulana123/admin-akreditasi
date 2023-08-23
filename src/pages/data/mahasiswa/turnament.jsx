@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import Sidebar from "../../../layout/sidebar";
-import { Box, Button, Divider, Flex, Image } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Image, useColorMode } from "@chakra-ui/react";
 import { BsFillCalendarDateFill } from "react-icons/bs";
 
 const Turnament = () => {
   const [year, setYear] = useState(2022);
   const breadcrumbs = ["Data Table", "Doc Mahasiswa", "Kompetisi Game"];
+  const {colorMode} = useColorMode()
+
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
       <Flex className="h-fit flex-col gap-3">
-        <Box className="bg-secondaryGray-300 rounded-xl py-5 px-10">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl py-5 px-10`}
+        >
           <h2 className="flex items-center gap-2 font-semibold text-xl">
             <BsFillCalendarDateFill className="text-brandTabs-300" /> Tahun :{" "}
           </h2>
@@ -30,13 +38,19 @@ const Turnament = () => {
             </Button>
           </Box>
         </Box>
-        <Box className="bg-secondaryGray-300 rounded-xl">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl`}
+        >
           <Box className="px-10 py-3">
             <h1 className="text-xl font-semibold">Recap {year}</h1>
           </Box>
           <Divider />
           {year === 2022 ? (
-            <Box className="px-10 py-5 flex flex-wrap gap-3">
+            <Box className="px-10 py-5 grid xl:grid-cols-2 gap-2 ">
               <Image
                 className="aspect-video w-[500px] object-cover rounded-xl border border-brandTabs-300 shadow-md"
                 src="https://lh3.google.com/u/0/d/1vNmCyFR2GeTn_vmRqCFZ-C1PTCI9wBSz=w1920-h888-iv1"

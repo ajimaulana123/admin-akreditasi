@@ -38,7 +38,13 @@ const Kurikulums = () => {
             <FaBookOpen className="text-brandTabs-300" /> Kurikulums
           </h2>
         </Box>
-        <Box className="bg-secondaryGray-300 rounded-xl">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl`}
+        >
           <TableContainer className="rounded-md">
             <Table variant="simple">
               <TableCaption
@@ -50,13 +56,7 @@ const Kurikulums = () => {
               >
                 Copyright Manajemen Informatika
               </TableCaption>
-              <Thead
-                className={`${
-                  colorMode === "dark"
-                    ? "bg-secondaryGray-900"
-                    : "bg-secondaryGray-300"
-                } `}
-              >
+              <Thead>
                 <Tr>
                   <Th textAlign="center">No</Th>
                   <Th textAlign="center">ID</Th>
@@ -66,16 +66,10 @@ const Kurikulums = () => {
                   <Th textAlign="center">Semester</Th>
                 </Tr>
               </Thead>
-              <Tbody
-                className={`${
-                  colorMode === "dark"
-                    ? "bg-secondaryGray-900"
-                    : "bg-secondaryGray-300"
-                }`}
-              >
+              <Tbody>
                 {isLoading ? (
                   <Tr>
-                    <Td>
+                    <Td className="">
                       <p className="px-10">Loading Data...</p>
                     </Td>
                   </Tr>

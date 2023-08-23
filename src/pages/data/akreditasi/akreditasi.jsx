@@ -13,6 +13,7 @@ import {
   Th,
   Thead,
   Tr,
+  useColorMode,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { BiSolidFileDoc } from "react-icons/bi";
@@ -21,17 +22,22 @@ import { useGetData } from "../../../hooks/apiMethod";
 const Akreditasi = () => {
   const apiUrl =
     "https://knowledgeable-painted-guarantee.glitch.me/dataAkreditasi";
-  const { data: fetchDatas, isLoading, refetchData } = useGetData(apiUrl);
+  const { datas, isLoading, refetchData } = useGetData(apiUrl);
+  const {colorMode} = useColorMode()
   const breadcrumbs = ["Data Table", "Akreditasi"];
 
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
-      <Box className="w-full h-fit bg-secondaryGray-300 rounded-xl p-10">
+      <Box
+        className={`${
+          colorMode === "dark" ? "bg-secondaryGray-900" : "bg-secondaryGray-300"
+        } rounded-xl p-10 w-full h-fit`}
+      >
         {isLoading ? (
           <p>Loading Data....</p>
         ) : (
           <Box className="flex flex-col gap-3">
-            {fetchDatas?.map((data, index) => {
+            {datas?.map((data, index) => {
               return (
                 <Card className="h-fit" key={index}>
                   <CardHeader className="flex items-center justify-between">

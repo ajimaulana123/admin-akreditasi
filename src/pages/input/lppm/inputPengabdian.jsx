@@ -37,7 +37,7 @@ const InputPengabdian = () => {
   const [editingData, setEditingData] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { showSuccessToast, showErrorToast } = useToastMessages();
-  const breadcrumbs = ["Data Table", "Download", "Input Pengabdian"];
+  const breadcrumbs = ["Edit Data", "Download", "Input Pengabdian"];
 
   const initialValues = {
     deskripsi: "",
@@ -54,11 +54,11 @@ const InputPengabdian = () => {
     link: Yup.string().required("Link Tidak Boleh Kosong"),
   });
 
-  const { data: fetchedData, isLoading, refetchData } = useGetData(apiUrl);
+  const { datas, isLoading, refetchData } = useGetData(apiUrl);
   const { postData } = usePostData();
   const { putData } = usePutData();
   const { deleteData } = useDeleteData();
-  const {colorMode} = useColorMode()
+  const { colorMode } = useColorMode();
 
   const onSubmit = async (values, actions) => {
     setIsSubmitting(true);
@@ -155,7 +155,7 @@ const InputPengabdian = () => {
                     </Td>
                   </Tr>
                 ) : (
-                  fetchedData?.map((data, index) => (
+                  datas?.map((data, index) => (
                     <Tr key={index}>
                       <Td textAlign="center">{index + 1}</Td>
                       <Td>{data.deskripsi}</Td>

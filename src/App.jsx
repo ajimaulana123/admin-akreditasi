@@ -42,15 +42,29 @@ import InputFormulir from "./pages/input/mutu/inputFormulir";
 import InputKebijakan from "./pages/input/mutu/inputKebijakan";
 import InputStandar from "./pages/input/mutu/inputStandar";
 import InputManual from "./pages/input/mutu/inputManual";
+import Magang from "./pages/data/mahasiswa/magang";
+import Seminar from "./pages/data/mahasiswa/seminar";
+import Webinar from "./pages/data/mahasiswa/webinar";
+import Hmj from "./pages/data/mahasiswa/hmj";
+import Jadwal from "./pages/data/jurusan/jadwal";
+import Dosen from "./pages/data/informasi/dosen";
+import Mahasiswa from "./pages/data/informasi/mahasiswa";
 
 const routes = [
   { path: "/", element: <Home /> },
   { path: "/data/makrab", element: <Makrab /> },
+  { path: "/data/magang", element: <Magang /> },
+  { path: "/data/seminar", element: <Seminar /> },
+  { path: "/data/webinar", element: <Webinar /> },
+  { path: "/data/hmj", element: <Hmj /> },
   { path: "/data/sosialisasi", element: <Sosialisasi /> },
   { path: "/data/kompetisi-game", element: <Turnament /> },
   { path: "/data/kurikulum", element: <Kurikulums /> },
   { path: "/data/karya", element: <Karya /> },
+  { path: "/data/jadwal", element: <Jadwal /> },
   { path: "/data/akreditasi", element: <Akreditasi /> },
+  { path: "/data/dosen", element: <Dosen /> },
+  { path: "/data/mahasiswa", element: <Mahasiswa /> },
   { path: "/data/formulir", element: <Formulir /> },
   { path: "/data/standar", element: <Standar /> },
   { path: "/data/kebijakan", element: <Kebijakan /> },

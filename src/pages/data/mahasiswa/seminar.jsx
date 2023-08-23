@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import Sidebar from "../../../layout/sidebar";
 import { BsFillCalendarDateFill } from "react-icons/bs";
-import { Box, Button, Divider, Flex, Image, useColorMode } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Image,
+  useColorMode,
+} from "@chakra-ui/react";
 
-const Makrab = () => {
+const Seminar = () => {
   const [year, setYear] = useState(2022);
-  const breadcrumbs = ["Data Table", "Doc Mahasiswa", "Makrab"];
-  const {colorMode} = useColorMode()
+  const breadcrumbs = ["Data Table", "Doc Mahasiswa", "Seminar"];
+  const { colorMode } = useColorMode();
 
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
@@ -122,4 +129,4 @@ const Makrab = () => {
   );
 };
 
-export default Makrab;
+export default Seminar;

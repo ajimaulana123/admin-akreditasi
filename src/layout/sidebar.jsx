@@ -55,6 +55,7 @@ import {
   FaFileContract,
   FaCertificate,
   FaAward,
+  FaNetworkWired,
 } from "react-icons/fa";
 import { LuFileInput } from "react-icons/lu";
 import { GiPartyFlags } from "react-icons/gi";
@@ -75,20 +76,21 @@ const menuItems = [
         icon: RiCollageFill,
         subMenuNested: [
           { text: "Makrab", icon: GiPartyFlags, path: "/data/makrab" },
-          { text: "Magang", icon: MdWork },
+          { text: "Magang", icon: MdWork, path: "/data/magang" },
           {
             text: "Sosialisasi",
             icon: BsFillChatDotsFill,
             path: "/data/sosialisasi",
           },
-          { text: "Seminar", icon: MdEventNote },
-          { text: "Webinar", icon: FaDesktop },
+          { text: "Seminar", icon: MdEventNote, path: "/data/seminar" },
+          { text: "Webinar", icon: FaDesktop, path: "/data/webinar" },
           {
             text: "Kompetisi Game",
             icon: FaTrophy,
             path: "/data/kompetisi-game",
           },
           { text: "KAI", icon: RiCollageFill },
+          { text: "HMJ", icon: FaNetworkWired, path: "/data/hmj" },
         ],
       },
       {
@@ -96,14 +98,13 @@ const menuItems = [
         icon: AiFillBuild,
         subMenuNested: [
           { text: "Kurikulum", icon: FaBookOpen, path: "/data/kurikulum" },
-          { text: "Jadwal", icon: FaCalendarAlt },
+          { text: "Jadwal", icon: FaCalendarAlt, path: "/data/jadwal" },
           { text: "Karya Mahasiswa", icon: FaPalette, path: "/data/karya" },
         ],
       },
       { text: "Akreditasi", icon: BsFiletypeDoc, path: "/data/akreditasi" },
-      { text: "Sarana Prasarana", icon: BsFillLightbulbFill },
-      { text: "Informasi Dosen", icon: BsInfoSquareFill },
-      { text: "Informasi Mahasiswa", icon: BsInfoSquareFill },
+      { text: "Informasi Dosen", icon: BsInfoSquareFill, path: "/data/dosen" },
+      { text: "Informasi Mahasiswa", icon: BsInfoSquareFill, path: "/data/mahasiswa" },
       {
         text: "Penjaminan Mutu",
         icon: FaCheckCircle,

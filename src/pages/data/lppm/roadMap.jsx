@@ -16,38 +16,41 @@ import {
   Th,
   Thead,
   Tr,
+  useColorMode,
 } from "@chakra-ui/react";
 import { BsFillCalendarDateFill } from "react-icons/bs";
 import { FaBookOpen, FaMapSigns } from "react-icons/fa";
 import axios from "axios";
+import { useGetData } from "../../../hooks/apiMethod";
 
 const RoadMap = () => {
-  const [datas, setDatas] = useState(null);
-  const breadcrumbs = ["Data Table", "Lppm", "RoadMap"];
-
-  useEffect(() => {
-    const fetchDatas = async () => {
-      try {
-        const { data } = await axios.get(
-          "https://knowledgeable-painted-guarantee.glitch.me/roadMap_lppm"
-        );
-        setDatas(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchDatas();
-  }, []);
+  const apiUrl =
+    "https://knowledgeable-painted-guarantee.glitch.me/roadMap_lppm";
+  const breadcrumbs = ["Data Table", "Lppm", "Road Map"];
+  const { colorMode } = useColorMode();
+  const { datas, isLoading } = useGetData(apiUrl);
 
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
       <Flex className="h-fit flex-col gap-3">
-        <Box className="bg-secondaryGray-300 rounded-xl py-5 px-10">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl py-5 px-10`}
+        >
           <h2 className="flex items-center gap-2 font-semibold text-xl">
             <FaMapSigns className="text-brandTabs-300" /> Road Map
           </h2>
         </Box>
-        <Box className="bg-secondaryGray-300 rounded-xl">
+        <Box
+          className={`${
+            colorMode === "dark"
+              ? "bg-secondaryGray-900"
+              : "bg-secondaryGray-300"
+          } rounded-xl`}
+        >
           <TableContainer>
             <Table variant="simple">
               <TableCaption>Copyright Manajemen Informatika</TableCaption>
@@ -61,7 +64,13 @@ const RoadMap = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {datas ? (
+                {isLoading ? (
+                  <Tr>
+                    <Td>
+                      <p className="px-10">Loading Data...</p>
+                    </Td>
+                  </Tr>
+                ) : (
                   datas.map((data, index) => {
                     return (
                       <Tr key={index}>
@@ -75,12 +84,6 @@ const RoadMap = () => {
                       </Tr>
                     );
                   })
-                ) : (
-                  <Tr>
-                    <Td>
-                      <p className="px-10">Loading Data...</p>
-                    </Td>
-                  </Tr>
                 )}
               </Tbody>
             </Table>
