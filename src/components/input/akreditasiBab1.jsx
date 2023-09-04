@@ -190,7 +190,7 @@ const AkreditasiBab1 = () => {
             };
 
             existingData[0].dataBab?.push(newData);
-            // await putData(apiUrl, existingData[0].id, existingData[0]);
+            await putData(apiUrl, existingData[0].id, existingData[0]);
           }
         } else {
           console.log(existingData);
