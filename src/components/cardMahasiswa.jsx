@@ -22,16 +22,30 @@ import {
   Thead,
   Tr,
   UnorderedList,
+  useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
 
-const CardMahasiswa = () => {
+const CardMahasiswa = ({ data }) => {
+  const { colorMode } = useColorMode();
+  const switchTheme = (a, b) => {
+    if (colorMode === "dark") {
+      return a;
+    } else {
+      return b;
+    }
+  };
+
   return (
-    <Card rounded={"xl"} width={"fit-content"} height={"fit-content"}>
+    <Card
+      rounded={"xl"}
+      width={"fit-content"}
+      height={"fit-content"}
+      className={`${switchTheme("bg-brandTabs-900", "bg-white")}`}
+    >
       <CardBody padding={3}>
         <Image
-          src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
-          alt="Green double couch with wooden legs"
+          src={data.imageProfile}
           borderRadius="lg"
           width={400}
           height={350}
@@ -39,9 +53,9 @@ const CardMahasiswa = () => {
         />
         <Stack mt="6" spacing="3" width={400}>
           <Heading size="md" textAlign={"center"}>
-            Jovan Panji Pratama
+            {data.name}
           </Heading>
-          <Text textAlign={"center"}>22141002</Text>
+          <Text textAlign={"center"}>{data.nim}</Text>
         </Stack>
         <Divider mt={5} />
         <Accordion allowMultiple width={400} mt={2}>
@@ -74,7 +88,7 @@ const CardMahasiswa = () => {
                       <Text>:</Text>
                     </Td>
                     <Td border={"none"} padding={0}>
-                      <Text ml={2}>Jovan Panji Pratama</Text>
+                      <Text ml={2}>{data.name}</Text>
                     </Td>
                   </Tr>
                   <Tr>
@@ -88,12 +102,22 @@ const CardMahasiswa = () => {
                       <Text>:</Text>
                     </Td>
                     <Td border={"none"} padding={0}>
+                      <Text ml={2}>{data.address}</Text>
+                    </Td>
+                  </Tr>
+                  <Tr>
+                    <Td
+                      border={"none"}
+                      padding={0}
+                      display={"flex"}
+                      justifyContent={"space-between"}
+                    >
+                      <Text>Tempat/tgl Lahir</Text>
+                      <Text>:</Text>
+                    </Td>
+                    <Td border={"none"} padding={0}>
                       <Text ml={2}>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Sequi quaerat vitae perspiciatis obcaecati! Eveniet et
-                        veniam molestias minima quis ipsum quos dolores labore
-                        aspernatur culpa? Maxime sapiente explicabo odit
-                        laborum.
+                        {data.born_place} {data.born_date}
                       </Text>
                     </Td>
                   </Tr>
@@ -104,11 +128,39 @@ const CardMahasiswa = () => {
                       display={"flex"}
                       justifyContent={"space-between"}
                     >
-                      <Text>DLL</Text>
+                      <Text>Nama orang tua</Text>
                       <Text>:</Text>
                     </Td>
                     <Td border={"none"} padding={0}>
-                      <Text ml={2}>DLL</Text>
+                      <Text ml={2}>{data.parentName}</Text>
+                    </Td>
+                  </Tr>
+                  <Tr>
+                    <Td
+                      border={"none"}
+                      padding={0}
+                      display={"flex"}
+                      justifyContent={"space-between"}
+                    >
+                      <Text>Telepon</Text>
+                      <Text>:</Text>
+                    </Td>
+                    <Td border={"none"} padding={0}>
+                      <Text ml={2}>{data.phoneNumber}</Text>
+                    </Td>
+                  </Tr>
+                  <Tr>
+                    <Td
+                      border={"none"}
+                      padding={0}
+                      display={"flex"}
+                      justifyContent={"space-between"}
+                    >
+                      <Text>Judul TA</Text>
+                      <Text>:</Text>
+                    </Td>
+                    <Td border={"none"} padding={0}>
+                      <Text ml={2}>{data.titleOfThesis}</Text>
                     </Td>
                   </Tr>
                 </Tbody>

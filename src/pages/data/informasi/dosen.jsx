@@ -10,11 +10,16 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import CardDosen from "../../../components/cardDosen";
+import { useGetData } from "../../../hooks/apiMethod";
 
 const Dosen = () => {
+  const apiUrl =
+    "https://64ed6977f9b2b70f2bfb7c84.mockapi.io/api/lectures_informations";
   const [year, setYear] = useState(2022);
   const breadcrumbs = ["Data Table", "Doc Mahasiswa", "Dosen"];
   const { colorMode } = useColorMode();
+  const { datas, isLoading, refetchData } = useGetData(apiUrl);
+  console.log(datas);
 
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
@@ -54,12 +59,13 @@ const Dosen = () => {
           } rounded-xl p-5`}
         >
           <Box className="flex flex-wrap gap-2 justify-center">
-            <CardDosen />
-            <CardDosen />
-            <CardDosen />
-            <CardDosen />
-            <CardDosen />
-            <CardDosen />
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              datas.map((dataDsn, index) => (
+                <CardDosen data={dataDsn} key={index} />
+              ))
+            )}
           </Box>
         </Box>
       </Flex>

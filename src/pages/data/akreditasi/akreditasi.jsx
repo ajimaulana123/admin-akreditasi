@@ -23,8 +23,16 @@ const Akreditasi = () => {
   const apiUrl =
     "https://knowledgeable-painted-guarantee.glitch.me/dataAkreditasi";
   const { datas, isLoading, refetchData } = useGetData(apiUrl);
-  const {colorMode} = useColorMode()
+  const { colorMode } = useColorMode();
   const breadcrumbs = ["Data Table", "Akreditasi"];
+
+  const switchTheme = (a, b) => {
+    if (colorMode === "dark") {
+      return a;
+    } else {
+      return b;
+    }
+  };
 
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
@@ -36,10 +44,13 @@ const Akreditasi = () => {
         {isLoading ? (
           <p>Loading Data....</p>
         ) : (
-          <Box className="flex flex-col gap-3">
+          <Box className="flex flex-col gap-2">
             {datas?.map((data, index) => {
               return (
-                <Card className="h-fit" key={index}>
+                <Card
+                  className={`${switchTheme("bg-brandTabs-900", "bg-white")}`}
+                  key={index}
+                >
                   <CardHeader className="flex items-center justify-between">
                     <h1 className="text-2xl font-bold">{data.judul}</h1>
                   </CardHeader>
@@ -53,7 +64,10 @@ const Akreditasi = () => {
                             </Th>
                             <Th>DESKRIPSI</Th>
                             <Th textAlign="center" className="w-[100px]">
-                              DOCUMEN
+                              DOKUMEN
+                            </Th>
+                            <Th textAlign="center" className="w-[100px]">
+                              STATUS
                             </Th>
                           </Tr>
                         </Thead>
@@ -71,6 +85,7 @@ const Akreditasi = () => {
                                     <BiSolidFileDoc className="text-2xl hover:text-blue-500" />
                                   </Link>
                                 </Td>
+                                <Td>Belum Terakreditasi</Td>
                               </Tr>
                             );
                           })}

@@ -104,7 +104,11 @@ const menuItems = [
       },
       { text: "Akreditasi", icon: BsFiletypeDoc, path: "/data/akreditasi" },
       { text: "Informasi Dosen", icon: BsInfoSquareFill, path: "/data/dosen" },
-      { text: "Informasi Mahasiswa", icon: BsInfoSquareFill, path: "/data/mahasiswa" },
+      {
+        text: "Informasi Mahasiswa",
+        icon: BsInfoSquareFill,
+        path: "/data/mahasiswa",
+      },
       {
         text: "Penjaminan Mutu",
         icon: FaCheckCircle,
@@ -356,12 +360,12 @@ const Sidebar = ({ breadcrumbs, children }) => {
         </Flex>
       </Box>
       <Box
-        className={`flex-1 relative px-5 overflow-y-auto ${
+        className={`flex-1 px-5 overflow-y-auto overflow-x-hidden w-fit ${
           colorMode === "dark" ? "bg-brandTabs-900" : "bg-blue-100"
         }`}
       >
-        <Flex className="backdrop-blur-sm w-full  px-5 top-5 p-5 justify-between items-center">
-          <Box>
+        <Flex className="backdrop-blur-sm w-full px-5 py-5 justify-between items-center">
+          <Box className="flex-1">
             <Breadcrumb>
               <BreadcrumbItem>
                 <Text>Pages</Text>
@@ -389,19 +393,6 @@ const Sidebar = ({ breadcrumbs, children }) => {
               isChecked={colorMode === "dark"}
               onChange={toggleColorMode}
             />
-            <Menu>
-              <MenuButton>
-                <Avatar src="https://avatars3.githubusercontent.com/u/100200?s=460&v=4" />
-              </MenuButton>
-              <MenuList className="w-fit">
-                <Flex className="py-2 px-5 flex-col gap-3">
-                  <h2>👋 Hey, Adela</h2>
-                  <Divider />
-                  <Link>Profil Settings</Link>
-                  <p className="text-red-500 cursor-pointer">Logout</p>
-                </Flex>
-              </MenuList>
-            </Menu>
           </Flex>
         </Flex>
         <Box className="pb-10 overflow-y-auto">{children}</Box>

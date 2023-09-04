@@ -16,15 +16,30 @@ import {
   Stack,
   Text,
   UnorderedList,
+  useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
 
-const CardDosen = () => {
+const CardDosen = ({data}) => {
+  const {colorMode} = useColorMode()
+  const switchTheme = (a, b) => {
+    if (colorMode === "dark") {
+      return a;
+    } else {
+      return b;
+    }
+  };
+
   return (
-    <Card rounded={"xl"} width={"fit-content"} height={"fit-content"}>
+    <Card
+      rounded={"xl"}
+      width={"fit-content"}
+      height={"fit-content"}
+      className={`${switchTheme("bg-brandTabs-900", "bg-white")}`}
+    >
       <CardBody padding={3}>
         <Image
-          src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60"
+          src={data.imageProfile}
           alt="Green double couch with wooden legs"
           borderRadius="lg"
           width={300}
@@ -33,10 +48,10 @@ const CardDosen = () => {
         />
         <Stack mt="6" spacing="3" width={300}>
           <Heading size="md" textAlign={"center"}>
-            Bapak Harjono
+            {data.name}
           </Heading>
           <Text textAlign={"center"}>
-            Ketua Program Studi Manajemen Informatika
+            {data.position}
           </Text>
         </Stack>
         <Divider mt={5} />

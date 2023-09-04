@@ -55,6 +55,7 @@ const EditAddModal = ({
                     <label>{control.label}</label>
                     <Input
                       type="text"
+                      readOnly={control.read ? true : false}
                       name={control.name}
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}

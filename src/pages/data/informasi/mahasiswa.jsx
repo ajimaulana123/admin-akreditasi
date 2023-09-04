@@ -4,17 +4,19 @@ import { BsFillCalendarDateFill } from "react-icons/bs";
 import {
   Box,
   Button,
-  Divider,
   Flex,
-  Image,
   useColorMode,
 } from "@chakra-ui/react";
 import CardMahasiswa from "../../../components/cardMahasiswa";
+import { useGetData } from "../../../hooks/apiMethod";
 
 const Mahasiswa = () => {
+  const apiUrl =
+  "https://64ed6977f9b2b70f2bfb7c84.mockapi.io/api/students_informations";
   const [year, setYear] = useState(2022);
   const breadcrumbs = ["Data Table", "Informasi", "Mahasiswa"];
   const { colorMode } = useColorMode();
+  const { datas, isLoading, refetchData } = useGetData(apiUrl);
 
   return (
     <Sidebar breadcrumbs={breadcrumbs}>
@@ -54,11 +56,13 @@ const Mahasiswa = () => {
           } rounded-xl p-5`}
         >
           <Box className="flex flex-wrap gap-2 justify-center">
-            <CardMahasiswa />
-            <CardMahasiswa />
-            <CardMahasiswa />
-            <CardMahasiswa />
-            <CardMahasiswa />
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : (
+              datas.map((dataMhs, index) => (
+                <CardMahasiswa data={dataMhs} key={index} />
+              ))
+            )}
           </Box>
         </Box>
       </Flex>
