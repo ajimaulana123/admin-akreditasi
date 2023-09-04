@@ -62,7 +62,7 @@ const ContentSecond = () => {
                 return (
                   <Tbody key={index}>
                     <Tr>
-                      <Td>{data.deskripsi}</Td>
+                      <Td>{data?.deskripsi}</Td>
                       <Td textAlign="center" px={0}>
                         Belum Terakreditasi{" "}
                       </Td>
