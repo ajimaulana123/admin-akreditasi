@@ -36,6 +36,7 @@ const AkreditasiBab1 = () => {
   const apiUrl =
     "https://knowledgeable-painted-guarantee.glitch.me/dataAkreditasi";
   const [editingId, setEditingId] = useState(null);
+  const [editingIdNoSub, setEditingIdNoSub] = useState(null);
   const [editingJudul, setEditingJudul] = useState(null);
   const [editingData, setEditingData] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -109,37 +110,60 @@ const AkreditasiBab1 = () => {
         const [existingData] = datas.filter(
           (item) => item.titleBab === values.bab
         );
-        const [findData] = existingData.dataBab.filter(
-          (item) => item.title === values.judul
-        );
+        const [findData] =
+          bab === datas[0]?.titleBab
+            ? existingData.dataBab.filter((item) => item.title === values.judul)
+            : existingData.dataBody.filter(
+                (item) => item.id === editingIdNoSub
+              );
 
-        const newData = {
-          ...existingData,
-          dataBab: existingData.dataBab.map((bab) => {
-            if (bab === findData) {
-              return {
-                id: findData.id,
-                title: findData.title,
-                dataBody: bab.dataBody.map((body) => {
-                  if (body.id === editingId) {
-                    return {
-                      ...body,
-                      deskripsi: values.deskripsi,
-                      link: values.link.startsWith("https://")
-                        ? values.link
-                        : `https://${values.link}`,
-                    };
-                  } else {
-                    return body;
-                  }
-                }),
-              };
-            } else {
-              return bab;
-            }
-          }),
-        };
-        await putData(apiUrl, existingData.id, newData)
+        if (bab === datas[0]?.titleBab) {
+          const newData = {
+            ...existingData,
+            dataBab: existingData.dataBab.map((bab) => {
+              if (bab === findData) {
+                return {
+                  id: findData.id,
+                  title: findData.title,
+                  dataBody: bab.dataBody.map((body) => {
+                    if (body.id === editingId) {
+                      return {
+                        ...body,
+                        deskripsi: values.deskripsi,
+                        link: values.link.startsWith("https://")
+                          ? values.link
+                          : `https://${values.link}`,
+                      };
+                    } else {
+                      return body;
+                    }
+                  }),
+                };
+              } else {
+                return bab;
+              }
+            }),
+          };
+          await putData(apiUrl, existingData.id, newData);
+        }else {
+          const newData = {
+            ...existingData,
+            dataBody: existingData.dataBody.map(body => {
+              if(body.id === editingIdNoSub) {
+                return {
+                  ...body,
+                  deskripsi: values.deskripsi,
+                  link: values.link.startsWith("https://")
+                    ? values.link
+                    : `https://${values.link}`,
+                };
+              } else {
+                return body
+              }
+            })
+          }
+          await putData(apiUrl, existingData.id, newData)
+        }
       } else {
         const existingData = datas.filter(
           (item) => item.titleBab === values.bab
@@ -180,6 +204,7 @@ const AkreditasiBab1 = () => {
               title: values.judul,
               dataBody: [
                 {
+                  id: Math.floor(Math.random() * (9999 + 999 + 1)) + 1,
                   deskripsi: values.deskripsi,
                   link: values.link.startsWith("https://")
                     ? values.link
@@ -195,6 +220,7 @@ const AkreditasiBab1 = () => {
         } else {
           console.log(existingData);
           const newData = {
+            id: Math.floor(Math.random() * (9999 + 999 + 1)) + 1,
             deskripsi: values.deskripsi,
             link: values.link.startsWith("https://")
               ? values.link
@@ -203,7 +229,7 @@ const AkreditasiBab1 = () => {
           };
 
           existingData[0].dataBody?.push(newData);
-          await putData(apiUrl, existingData[0].id, newData);
+          await putData(apiUrl, existingData[0].id, existingData[0]);
         }
       }
 
@@ -225,29 +251,43 @@ const AkreditasiBab1 = () => {
     setIndexItemDeleting(rowIndex);
     try {
       const [existingData] = await datas.filter((item) => item.id === parentId);
-      const [findDataDeleteParent] = existingData.dataBab.filter(
-        (item) => item.id === dataId
-      );
 
-      if (findDataDeleteParent) {
-        const newDataBody = findDataDeleteParent.dataBody.filter(
-          (_, index) => index !== rowIndex
-        );
+      const [findDataDeleteParent] = existingData.dataBab
+        ? existingData.dataBab.filter((item) => item.id === dataId)
+        : existingData.dataBody.filter((item) => item.id === body.id);
 
-        const newData = {
-          ...existingData,
-          dataBab: existingData.dataBab.map((bab) => {
-            if (bab === findDataDeleteParent) {
-              return {
-                ...bab,
-                dataBody: newDataBody,
-              };
-            } else {
-              return bab;
-            }
-          }),
-        };
-        await putData(apiUrl, existingData.id, newData);
+      if (bab === datas[0]?.titleBab) {
+        if (findDataDeleteParent) {
+          const newDataBody = findDataDeleteParent.dataBody.filter(
+            (_, index) => index !== rowIndex
+          );
+
+          const newData = {
+            ...existingData,
+            dataBab: existingData.dataBab.map((bab) => {
+              if (bab === findDataDeleteParent) {
+                return {
+                  ...bab,
+                  dataBody: newDataBody,
+                };
+              } else {
+                return bab;
+              }
+            }),
+          };
+          await putData(apiUrl, existingData.id, newData);
+        }
+      } else {
+        if (findDataDeleteParent) {
+          const newDataBoddy = existingData.dataBody.filter(
+            (bodyPrev) => bodyPrev.id !== body.id
+          );
+          const newData = {
+            ...existingData,
+            dataBody: newDataBoddy,
+          };
+          await putData(apiUrl, existingData.id, newData);
+        }
       }
 
       setIndexItemDeleting(null);
@@ -286,8 +326,18 @@ const AkreditasiBab1 = () => {
   };
 
   const handleEdit = (id, bab, judul, data) => {
-    setBab(bab)
+    setBab(bab);
     setEditingId(id);
+    setEditingJudul(judul);
+    setEditingData(data);
+    onOpen();
+  };
+
+  const handleEditSecond = (id, idSecond, bab, judul, data) => {
+    console.log(idSecond);
+    setBab(bab);
+    setEditingId(id);
+    setEditingIdNoSub(idSecond)
     setEditingJudul(judul);
     setEditingData(data);
     onOpen();
@@ -502,7 +552,13 @@ const AkreditasiBab1 = () => {
                                     colorScheme="yellow"
                                     icon={<FaEdit />}
                                     onClick={() =>
-                                      handleEdit(data.id, data.title, body)
+                                      handleEditSecond(
+                                        dataParent.id,
+                                        body.id,
+                                        dataParent.titleBab,
+                                        dataParent.titleBab,
+                                        body
+                                      )
                                     }
                                   />
                                   <IconButton
@@ -515,7 +571,12 @@ const AkreditasiBab1 = () => {
                                       )
                                     }
                                     onClick={() =>
-                                      handleDeleteItem(data.id, body, index)
+                                      handleDeleteItem(
+                                        dataParent.id,
+                                        body.id,
+                                        body,
+                                        index
+                                      )
                                     }
                                     isDisabled={indexItemDeleting === index}
                                   />
