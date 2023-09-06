@@ -103,6 +103,7 @@ const menuItems = [
         ],
       },
       { text: "Akreditasi", icon: BsFiletypeDoc, path: "/data/akreditasi" },
+      { text: "Sarana Prasarana", icon: BsFillLightbulbFill, path: "/data/sarana-prasarana" },
       { text: "Informasi Dosen", icon: BsInfoSquareFill, path: "/data/dosen" },
       {
         text: "Informasi Mahasiswa",
@@ -174,7 +175,7 @@ const menuItems = [
         text: "Doc Mahasiswa",
         icon: RiCollageFill,
         subMenuNested: [
-          { text: "Makrab", icon: GiPartyFlags },
+          { text: "Makrab", icon: GiPartyFlags, path: "/input/data/makrab" },
           { text: "Magang", icon: MdWork },
           { text: "Sosialisasi", icon: BsFillChatDotsFill },
           { text: "Seminar", icon: MdEventNote },
@@ -187,7 +188,7 @@ const menuItems = [
         text: "Doc Jurusan",
         icon: AiFillBuild,
         subMenuNested: [
-          { text: "Kurikulum", icon: FaBookOpen },
+          { text: "Kurikulum", icon: FaBookOpen, path: "/input/data/kurikulum" },
           { text: "Jadwal", icon: FaCalendarAlt },
           { text: "Karya Mahasiswa", icon: FaPalette },
         ],

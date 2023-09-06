@@ -49,6 +49,9 @@ import Hmj from "./pages/data/mahasiswa/hmj";
 import Jadwal from "./pages/data/jurusan/jadwal";
 import Dosen from "./pages/data/informasi/dosen";
 import Mahasiswa from "./pages/data/informasi/mahasiswa";
+import SaranaPrasarana from "./pages/data/sarana/saranaPrasarana";
+import InputKurikulums from "./pages/input/jurusan/inputKurikulum";
+import InputMakrab from "./pages/input/mahasiswa/inputMakrab";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -63,6 +66,7 @@ const routes = [
   { path: "/data/karya", element: <Karya /> },
   { path: "/data/jadwal", element: <Jadwal /> },
   { path: "/data/akreditasi", element: <Akreditasi /> },
+  { path: "/data/sarana-prasarana", element: <SaranaPrasarana /> },
   { path: "/data/dosen", element: <Dosen /> },
   { path: "/data/mahasiswa", element: <Mahasiswa /> },
   { path: "/data/formulir", element: <Formulir /> },
@@ -82,6 +86,8 @@ const routes = [
   { path: "/data/sertifikat-dosen", element: <SertifikatDosen /> },
   { path: "/data/sertifikat-documen", element: <SertifikatDocument /> },
   { path: "/data/sertifikat", element: <Sertifikat /> },
+  { path: "/input/data/makrab", element: <InputMakrab /> },
+  { path: "/input/data/kurikulum", element: <InputKurikulums /> },
   { path: "/input/data/bpk", element: <InputBpk /> },
   { path: "/input/data/rps", element: <InputRps /> },
   { path: "/input/data/kontrak-kuliah", element: <InputKontrakKuliah /> },

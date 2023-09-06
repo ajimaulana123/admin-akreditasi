@@ -10,6 +10,29 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 
+const imageYearData = {
+  2022: [
+    {
+      src: "https://images.unsplash.com/photo-1517732306149-e8f829eb588a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      alt: "Gambar 1 - Tahun 2022",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      alt: "Gambar 2 - Tahun 2022",
+    },
+  ],
+  2021: [
+    {
+      src: "https://images.unsplash.com/photo-1532635241-17e820acc59f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGVvcGxlfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      alt: "Gambar 1 - Tahun 2021",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1553531889-e6cf4d692b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxzZWFyY2h8MXx8cGVvcGxlfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      alt: "Gambar 2 - Tahun 2021",
+    },
+  ],
+};
+
 const Magang = () => {
   const [year, setYear] = useState(2022);
   const breadcrumbs = ["Data Table", "Doc Mahasiswa", "Magang"];
@@ -56,73 +79,19 @@ const Magang = () => {
             <h1 className="text-xl font-semibold">Recap {year}</h1>
           </Box>
           <Divider />
-          {year === 2022 ? (
-            <Box className="px-10 py-5 grid xl:grid-cols-2 gap-2">
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/1-ndyA7w5ZaZURvhJxOSTNIFunXfpolSy=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/17343n6ERQKCcvSK5_5u3eoz94nn0vNYn=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/19vmn1RZAZJcv3AhjMA-SuCLY-qqmACrd=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/1s7SlTPdPstwprLeRsBgqml5xzzFG0h4Y=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/1F_eiWRaWUS56uQ-eM06d6XpaQmMR3nXx=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/1VAf3bBVQxds4yLZWYGPOfsOGG-aFnkN1=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-            </Box>
-          ) : (
-            <Box className="px-10 py-5 grid xl:grid-cols-2 gap-2">
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/1y7EAvWngVbHdqCH0VtPz7E5Pp-jEW4wL=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/1y5YBHvlWUrRkzbr1rpXmpy9gbtYwRipH=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/1z9zv2kJt80pJCOJow8TJkysdld9TpQX6=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/1xR7CO14mqgqFldbI4ewZ1SfKuVM7HI5u=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/1xTcSYhdFNYIK1z7qUmjDIGMjOCkvmy9q=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-              <Image
-                className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                src="https://lh3.google.com/u/0/d/1wTZmgewlZmBeV2OUMKSE4MHmsnuv6Mo1=w1367-h888-iv1"
-                alt="Dan Abramov"
-              />
-            </Box>
-          )}
+          <Box className="px-10 py-5 grid xl:grid-cols-2 gap-2">
+            {imageYearData[year].map((image, index) => {
+              console.log(image);
+              return (
+                <Image
+                  key={index}
+                  className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                  src={image.src}
+                  alt={image.alt}
+                />
+              );
+            })}
+          </Box>
         </Box>
       </Flex>
     </Sidebar>

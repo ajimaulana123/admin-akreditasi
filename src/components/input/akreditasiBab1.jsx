@@ -145,11 +145,11 @@ const AkreditasiBab1 = () => {
             }),
           };
           await putData(apiUrl, existingData.id, newData);
-        }else {
+        } else {
           const newData = {
             ...existingData,
-            dataBody: existingData.dataBody.map(body => {
-              if(body.id === editingIdNoSub) {
+            dataBody: existingData.dataBody.map((body) => {
+              if (body.id === editingIdNoSub) {
                 return {
                   ...body,
                   deskripsi: values.deskripsi,
@@ -158,11 +158,11 @@ const AkreditasiBab1 = () => {
                     : `https://${values.link}`,
                 };
               } else {
-                return body
+                return body;
               }
-            })
-          }
-          await putData(apiUrl, existingData.id, newData)
+            }),
+          };
+          await putData(apiUrl, existingData.id, newData);
         }
       } else {
         const existingData = datas.filter(
@@ -246,34 +246,39 @@ const AkreditasiBab1 = () => {
     }
   };
 
-  const handleDeleteItem = async (parentId, dataId, body, rowIndex) => {
+  const handleDeleteItem = async (bab, parentId, dataId, body, rowIndex, titleBody) => {
     setIndexBody(body.deskripsi);
+    setBab(bab)
     setIndexItemDeleting(rowIndex);
     try {
       const [existingData] = await datas.filter((item) => item.id === parentId);
+      console.log({bab, parentId, dataId, body, rowIndex, titleBody});
+      console.log(existingData);
 
-      const [findDataDeleteParent] = existingData.dataBab
-        ? existingData.dataBab.filter((item) => item.id === dataId)
-        : existingData.dataBody.filter((item) => item.id === body.id);
+      const [findDataDeleteParent] =
+        bab === datas[0]?.titleBab
+          ? existingData.dataBab.filter((item) => item.title === titleBody)
+          : existingData.dataBody.filter((item) => item.id === body.id);
 
       if (bab === datas[0]?.titleBab) {
+        console.log(true);
         if (findDataDeleteParent) {
           const newDataBody = findDataDeleteParent.dataBody.filter(
-            (_, index) => index !== rowIndex
+            body => body.id !== dataId
           );
 
           const newData = {
             ...existingData,
-            dataBab: existingData.dataBab.map((bab) => {
-              if (bab === findDataDeleteParent) {
+            dataBab: existingData.dataBab.map(dataBab => {
+              if(dataBab.title === titleBody) {
                 return {
-                  ...bab,
-                  dataBody: newDataBody,
-                };
+                  ...dataBab,
+                  dataBody: newDataBody
+                }
               } else {
-                return bab;
+                return dataBab
               }
-            }),
+            })
           };
           await putData(apiUrl, existingData.id, newData);
         }
@@ -337,7 +342,7 @@ const AkreditasiBab1 = () => {
     console.log(idSecond);
     setBab(bab);
     setEditingId(id);
-    setEditingIdNoSub(idSecond)
+    setEditingIdNoSub(idSecond);
     setEditingJudul(judul);
     setEditingData(data);
     onOpen();
@@ -391,7 +396,7 @@ const AkreditasiBab1 = () => {
                       key={index}
                     >
                       <CardHeader className="flex items-center justify-between">
-                        <h1 className="text-2xl font-bold">{data.title}</h1>
+                        <h1 className="text-2xl font-bold">{data?.title}</h1>
                         <IconButton
                           colorScheme="red"
                           icon={
@@ -466,10 +471,12 @@ const AkreditasiBab1 = () => {
                                         }
                                         onClick={() =>
                                           handleDeleteItem(
+                                            dataParent.titleBab,
                                             dataParent.id,
-                                            data.id,
+                                            body.id,
                                             body,
-                                            index
+                                            index,
+                                            data.title
                                           )
                                         }
                                         isDisabled={indexItemDeleting === index}
@@ -572,6 +579,7 @@ const AkreditasiBab1 = () => {
                                     }
                                     onClick={() =>
                                       handleDeleteItem(
+                                        dataParent.titleBab,
                                         dataParent.id,
                                         body.id,
                                         body,
