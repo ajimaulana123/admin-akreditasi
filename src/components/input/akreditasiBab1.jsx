@@ -440,6 +440,7 @@ const AkreditasiBab1 = () => {
                                     <Td>{body.deskripsi}</Td>
                                     <Td textAlign="center">
                                       <Link
+                                        target="_blank"
                                         href={body.link}
                                         className="flex justify-center"
                                       >
@@ -547,6 +548,7 @@ const AkreditasiBab1 = () => {
                                 <Td>{body.deskripsi}</Td>
                                 <Td textAlign="center">
                                   <Link
+                                    target="_blank"
                                     href={body.link}
                                     className="flex justify-center"
                                   >
