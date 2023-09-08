@@ -42,9 +42,6 @@ const DTamplate = ({ endpoint, title }) => {
                   <Th w={100} textAlign={"center"}>
                     DOKUMEN
                   </Th>
-                  <Th w={100} textAlign={"center"}>
-                    STATUS
-                  </Th>
                 </Tr>
               </Thead>
               <Tbody>
@@ -61,7 +58,6 @@ const DTamplate = ({ endpoint, title }) => {
                         )}
                       </Link>
                     </Td>
-                    <Td>{data.status}</Td>
                   </Tr>
                 ))}
               </Tbody>

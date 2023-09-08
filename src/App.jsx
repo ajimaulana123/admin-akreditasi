@@ -52,6 +52,7 @@ import Mahasiswa from "./pages/data/informasi/mahasiswa";
 import SaranaPrasarana from "./pages/data/sarana/saranaPrasarana";
 import InputKurikulums from "./pages/input/jurusan/inputKurikulum";
 import InputMakrab from "./pages/input/mahasiswa/inputMakrab";
+import DocInputAkreditasi from "./pages/doc/docInputAkreditasi";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -103,6 +104,7 @@ const routes = [
   { path: "/input/data/kebijakan", element: <InputKebijakan /> },
   { path: "/input/data/standar", element: <InputStandar /> },
   { path: "/input/data/manual", element: <InputManual /> },
+  {path: "/doc/akreditasi", element: <DocInputAkreditasi />},
   { path: "/color", element: <ColorPellete /> },
 ];
 
