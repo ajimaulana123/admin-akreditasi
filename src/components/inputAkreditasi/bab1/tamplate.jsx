@@ -109,7 +109,6 @@ const TamplateAkreditasi = ({ endpoint, title }) => {
   const validationSchema = Yup.object({
     deskripsi: Yup.string().required("Deskripsi is required"),
     link: Yup.string().required("Link is required"),
-    status: Yup.string().required("Status is required"),
     tipe: Yup.string().required("Type is required"),
   });
 
@@ -117,7 +116,6 @@ const TamplateAkreditasi = ({ endpoint, title }) => {
     initialValues: {
       deskripsi: "",
       link: "",
-      status: "",
       tipe: "",
     },
     validationSchema,
@@ -152,9 +150,6 @@ const TamplateAkreditasi = ({ endpoint, title }) => {
                     DOKUMEN
                   </Th>
                   <Th w={100} textAlign={"center"}>
-                    STATUS
-                  </Th>
-                  <Th w={100} textAlign={"center"}>
                     ACTION
                   </Th>
                 </Tr>
@@ -173,7 +168,6 @@ const TamplateAkreditasi = ({ endpoint, title }) => {
                         )}
                       </Link>
                     </Td>
-                    <Td>{data.status}</Td>
                     <Td>
                       <Flex className="gap-2">
                         <IconButton
@@ -183,7 +177,6 @@ const TamplateAkreditasi = ({ endpoint, title }) => {
                             onOpen();
                             formik.initialValues.deskripsi = data.deskripsi;
                             formik.initialValues.link = data.link;
-                            formik.initialValues.status = data.status;
                             formik.initialValues.tipe = data.tipe;
                           }}
                           colorScheme="yellow"
@@ -211,7 +204,6 @@ const TamplateAkreditasi = ({ endpoint, title }) => {
           setIsEditing && setIsEditing(null);
           formik.initialValues.deskripsi = "";
           formik.initialValues.link = "";
-          formik.initialValues.status = "";
           formik.initialValues.tipe = "";
           onClose();
         }}
@@ -265,26 +257,6 @@ const TamplateAkreditasi = ({ endpoint, title }) => {
                     {formik.touched.link && formik.errors.link && (
                       <FormErrorMessage>{formik.errors.link}</FormErrorMessage>
                     )}
-                  </FormControl>
-                  {/* Status */}
-                  <FormControl
-                    isInvalid={formik.touched.status && formik.errors.status}
-                  >
-                    <FormLabel>Status</FormLabel>
-                    <Field
-                      as={Select}
-                      name="status"
-                      {...formik.getFieldProps("status")}
-                    >
-                      <option value="">Pilih Status</option>
-                      <option value="Terakreditasi">Terakreditasi</option>
-                      <option value="Belum Terakreditasi">
-                        Belum Terakreditasi
-                      </option>
-                    </Field>
-                    <FormErrorMessage>
-                      {formik.touched.status && formik.errors.status}
-                    </FormErrorMessage>
                   </FormControl>
                   {/* Tipe */}
                   <FormControl
