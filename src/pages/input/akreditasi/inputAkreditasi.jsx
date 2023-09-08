@@ -1,8 +1,8 @@
 import { Flex } from "@chakra-ui/react";
-import Bab1 from "../../../components/akreditasi/bab1";
-import Bab2 from "../../../components/akreditasi/bab2";
+import Bab1 from "../../../components/inputAkreditasi/bab1";
+import Bab2 from "../../../components/inputAkreditasi/bab2";
 import Sidebar from "../../../layout/sidebar";
-import Bab3 from "../../../components/akreditasi/bab3";
+import Bab3 from "../../../components/inputAkreditasi/bab3";
 
 const InputAkreditasi = () => {
   const breadcrumbs = ["Input Data", "Akreditasi"];
