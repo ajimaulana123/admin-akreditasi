@@ -41,7 +41,7 @@ import { Field, Form, Formik, useFormik } from "formik";
 import useToastMessages from "../../../../hooks/useToastMessage";
 import * as Yup from "yup";
 
-const CTamplate = ({endpoint, title}) => {
+const CTamplate = ({endpoint}) => {
   const { colorMode } = useColorMode();
   const apiUrl = `https://knowledgeable-painted-guarantee.glitch.me/${endpoint}`;
   const { showSuccessToast, showErrorToast } = useToastMessages();
@@ -134,11 +134,13 @@ const CTamplate = ({endpoint, title}) => {
       <Box
         className={`${
           colorMode === "dark" ? "bg-brandTabs-900" : "bg-white"
-        } p-5 rounded-xl`}
+        } rounded-xl`}
       >
         <Flex className="items-center justify-between">
-          <Text className="text-xl font-semibold">{title}</Text>
-          <IconButton onClick={onOpen} colorScheme="green" icon={<FaPlus />} />
+          {/* <Text className="text-xl font-semibold">{title}</Text> */}
+          <Button colorScheme="green" onClick={onOpen} className="w-full">
+            Tambah Data
+          </Button>
         </Flex>
         {isLoading ? (
           <p>Loading...</p>
