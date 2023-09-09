@@ -119,8 +119,8 @@ const C = () => {
     <Accordion allowMultiple defaultIndex={[0]}>
       <AccordionItem
         className={`${
-          colorMode === "dark" ? "bg-brandTabs-900" : "bg-secondaryGray-300"
-        } border-none rounded-xl p-3`}
+          colorMode === "dark" ? "bg-brandTabs-900" : "bg-white"
+        } border-none rounded-xl p-3 shadow`}
       >
         <Text>
           <AccordionButton className="text-2xl font-semibold py-3">
@@ -139,7 +139,7 @@ const C = () => {
                   colorMode === "dark"
                     ? "bg-secondaryGray-900"
                     : "bg-secondaryGray-300"
-                } border-none rounded-xl mb-3 p-3`}
+                } border-none rounded-xl mb-3 shadow`}
               >
                 <AccordionButton>
                   <Text className="flex-1 text-start py-2 text-xl">
@@ -155,8 +155,8 @@ const C = () => {
                         className={`${
                           colorMode === "dark"
                             ? "bg-brandTabs-900"
-                            : "bg-secondaryGray-300"
-                        } border-none rounded-xl mb-2`}
+                            : "bg-white"
+                        } border-none rounded-xl mb-2 shadow`}
                       >
                         <AccordionButton>
                           <Text className="flex-1 text-start py-2 text-xl">

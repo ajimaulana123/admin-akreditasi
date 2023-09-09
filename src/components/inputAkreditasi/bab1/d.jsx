@@ -42,7 +42,7 @@ const D = () => {
       <AccordionItem
         className={`${
           colorMode === "dark" ? "bg-secondaryGray-900" : "bg-secondaryGray-300"
-        } border-none rounded-xl`}
+        } border-none rounded-xl shadow`}
       >
         <Text>
           <AccordionButton className="text-2xl font-semibold py-3">

@@ -134,7 +134,7 @@ const DTamplate = ({ endpoint, title }) => {
       <Box
         className={`${
           colorMode === "dark" ? "bg-brandTabs-900" : "bg-white"
-        } p-5 rounded-xl`}
+        } p-5 rounded-xl shadow`}
       >
         <Flex className="items-center justify-between">
           <Text className="text-xl font-semibold">{title}</Text>
