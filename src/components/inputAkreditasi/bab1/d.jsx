@@ -41,7 +41,7 @@ const D = () => {
     <Accordion allowMultiple defaultIndex={[0]}>
       <AccordionItem
         className={`${
-          colorMode === "dark" ? "bg-secondaryGray-900" : "bg-white"
+          colorMode === "dark" ? "bg-secondaryGray-900" : "bg-secondaryGray-300"
         } border-none rounded-xl shadow`}
       >
         <Text>
