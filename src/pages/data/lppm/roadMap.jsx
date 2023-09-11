@@ -24,7 +24,8 @@ import axios from "axios";
 import { useGetData } from "../../../hooks/apiMethod";
 
 const RoadMap = () => {
-  const apiUrl = "https://energetic-pear-petticoat.cyclic.app/roadMap_lppm";
+  const apiUrl =
+    "https://knowledgeable-painted-guarantee.glitch.me/roadMap_lppm";
   const breadcrumbs = ["Data Table", "Lppm", "Road Map"];
   const { colorMode } = useColorMode();
   const { datas, isLoading } = useGetData(apiUrl);

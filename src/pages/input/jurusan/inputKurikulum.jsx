@@ -22,7 +22,7 @@ import axios from "axios";
 import { useGetData } from "../../../hooks/apiMethod";
 
 const InputKurikulums = () => {
-  const apiUrl = "https://energetic-pear-petticoat.cyclic.app/kurikulums";
+  const apiUrl = "https://knowledgeable-painted-guarantee.glitch.me/kurikulums";
   const breadcrumbs = [ "Input Data", "Doc Jurusan", "Kurikulum"];
   const { datas, isLoading } = useGetData(apiUrl);
   const { colorMode } = useColorMode();

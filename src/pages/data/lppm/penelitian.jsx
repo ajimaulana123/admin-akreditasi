@@ -24,7 +24,8 @@ import axios from "axios";
 import { useGetData } from "../../../hooks/apiMethod";
 
 const Penelitian = () => {
-  const apiUrl = "https://energetic-pear-petticoat.cyclic.app/penelitian_lppm";
+  const apiUrl =
+    "https://knowledgeable-painted-guarantee.glitch.me/penelitian_lppm";
   const breadcrumbs = ["Data Table", "Lppm", "Penelitian"];
   const { colorMode } = useColorMode();
   const { datas, isLoading } = useGetData(apiUrl);

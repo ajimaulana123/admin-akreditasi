@@ -24,7 +24,7 @@ import axios from "axios";
 import { useGetData } from "../../../hooks/apiMethod";
 
 const Standar = () => {
-  const apiUrl = "https://energetic-pear-petticoat.cyclic.app/standart";
+  const apiUrl = "https://knowledgeable-painted-guarantee.glitch.me/standart";
   const breadcrumbs = ["Data Table", "Penjaminan Mutu", "Standar"];
   const { colorMode } = useColorMode();
   const { datas, isLoading } = useGetData(apiUrl);

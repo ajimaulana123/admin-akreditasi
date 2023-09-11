@@ -24,7 +24,7 @@ import axios from "axios";
 import { useGetData } from "../../../hooks/apiMethod";
 
 const Kebijakan = () => {
-  const apiUrl = "https://energetic-pear-petticoat.cyclic.app/kebijakan";
+  const apiUrl = "https://knowledgeable-painted-guarantee.glitch.me/kebijakan";
   const breadcrumbs = ["Data Table", "Penjaminan Mutu", "Kebijakan"];
   const { colorMode } = useColorMode();
   const { datas, isLoading } = useGetData(apiUrl);
