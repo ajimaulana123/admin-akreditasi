@@ -24,8 +24,7 @@ import axios from "axios";
 import { useGetData } from "../../../hooks/apiMethod";
 
 const Pedoman = () => {
-  const apiUrl =
-    "https://knowledgeable-painted-guarantee.glitch.me/pedoman_lppm";
+  const apiUrl = "https://energetic-pear-petticoat.cyclic.app/pedoman_lppm";
   const breadcrumbs = ["Data Table", "Lppm", "Pedoman"];
   const { colorMode } = useColorMode();
   const { datas, isLoading } = useGetData(apiUrl);

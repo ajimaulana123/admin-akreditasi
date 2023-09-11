@@ -43,7 +43,7 @@ import * as Yup from "yup";
 
 const CTamplate = ({endpoint}) => {
   const { colorMode } = useColorMode();
-  const apiUrl = `https://knowledgeable-painted-guarantee.glitch.me/${endpoint}`;
+  const apiUrl = `https://energetic-pear-petticoat.cyclic.app/${endpoint}`;
   const { showSuccessToast, showErrorToast } = useToastMessages();
   const [isSubmitting, setIsSubmitting] = useState(null);
   const [isDeleting, setIsDeleting] = useState(null);

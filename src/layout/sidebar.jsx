@@ -237,7 +237,7 @@ const menuItems = [
           { text: "HAKI", icon: FaShieldAlt, path: "/input/data/haki" },
           { text: "Road Map", icon: FaMapSigns, path: "/input/data/roadmap" },
           { text: "Pedoman", icon: FaFileAlt, path: "/input/data/pedoman" },
-          { text: "Renstra", icon: FaChartLine, path: "/input/data/renstra" },
+          { text: "Renstra", path: "/input/data/renstra" },
         ],
       },
       {

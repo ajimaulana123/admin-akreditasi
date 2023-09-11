@@ -17,7 +17,7 @@ import { BsFiletypeDoc, BsFillFolderFill } from "react-icons/bs";
 
 const DTamplate = ({ endpoint, title }) => {
   const { colorMode } = useColorMode();
-  const apiUrl = `https://knowledgeable-painted-guarantee.glitch.me/${endpoint}`;
+  const apiUrl = `https://energetic-pear-petticoat.cyclic.app/${endpoint}`;
   const { datas, isLoading, refetchData } = useGetData(apiUrl);
 
   return (

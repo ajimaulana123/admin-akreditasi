@@ -24,8 +24,7 @@ import axios from "axios";
 import { useGetData } from "../../../hooks/apiMethod";
 
 const Renstra = () => {
-  const apiUrl =
-    "https://knowledgeable-painted-guarantee.glitch.me/renstra_lppm";
+  const apiUrl = "https://energetic-pear-petticoat.cyclic.app/renstra_lppm";
   const breadcrumbs = ["Data Table", "Lppm", "Renstra"];
   const { colorMode } = useColorMode();
   const { datas, isLoading } = useGetData(apiUrl);

@@ -30,8 +30,7 @@ import useToastMessages from "../../../hooks/useToastMessage";
 import EditAddModal from "../../../components/modal";
 
 const InputHaki = () => {
-  const apiUrl =
-    "https://knowledgeable-painted-guarantee.glitch.me/haki_lppm";
+  const apiUrl = "https://energetic-pear-petticoat.cyclic.app/haki_lppm";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [deletingItemId, setDeletingItemId] = useState(null);
   const [editingData, setEditingData] = useState(null);

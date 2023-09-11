@@ -30,8 +30,7 @@ import useToastMessages from "../../../hooks/useToastMessage";
 import EditAddModal from "../../../components/modal";
 
 const InputJurnal = () => {
-  const apiUrl =
-    "https://knowledgeable-painted-guarantee.glitch.me/jurnal_lppm";
+  const apiUrl = "https://energetic-pear-petticoat.cyclic.app/jurnal_lppm";
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [deletingItemId, setDeletingItemId] = useState(null);
   const [editingData, setEditingData] = useState(null);
