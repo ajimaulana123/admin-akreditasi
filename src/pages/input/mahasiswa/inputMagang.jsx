@@ -20,30 +20,7 @@ import {
 } from "../../../hooks/apiMethod";
 import useToastMessage from "../../../hooks/useToastMessage";
 
-const imageYearData = {
-  2022: [
-    {
-      src: "https://images.unsplash.com/photo-1517732306149-e8f829eb588a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVvcGxlfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      alt: "Gambar 1 - Tahun 2022",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVvcGxlfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      alt: "Gambar 2 - Tahun 2022",
-    },
-  ],
-  2021: [
-    {
-      src: "https://images.unsplash.com/photo-1532635241-17e820acc59f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGVvcGxlfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      alt: "Gambar 1 - Tahun 2021",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1553531889-e6cf4d692b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxzZWFyY2h8MXx8cGVvcGxlfGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      alt: "Gambar 2 - Tahun 2021",
-    },
-  ],
-};
-
-const InputMakrab = () => {
+const InputMagang = () => {
   const currentYear = new Date().getFullYear();
   const startYear = 2021;
 
@@ -54,7 +31,7 @@ const InputMakrab = () => {
 
   const [year, setYear] = useState(2021);
   const apiUrl = `https://akreditasi-mi-api.vercel.app/api/makrab/${year}`;
-  const breadcrumbs = ["Input Data", "Doc Mahasiswa", "Input Makrab"];
+  const breadcrumbs = ["Input Data", "Doc Mahasiswa", "Input Magang"];
   const { colorMode } = useColorMode();
   const { datas, isLoading, refetchData } = useGetData(apiUrl);
   const { postData } = usePostData();
@@ -77,24 +54,16 @@ const InputMakrab = () => {
   const handlePostImage = async () => {
     setIsSubbmiting(true);
     try {
-      await postData(
-        apiUrl,
-        {
-          image,
-        },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      await postData(apiUrl, {
+        image,
+      });
       refetchData();
       showSuccessToast("Gambar berhasil diunggah");
     } catch (error) {
       console.log(error);
       showErrorToast("Ada keanomalian");
     } finally {
-      setImaage(null)
+      setImaage(null);
       setIsSubbmiting(null);
       setPreUpload(false);
       setSelectedImage(null);
@@ -222,4 +191,4 @@ const InputMakrab = () => {
   );
 };
 
-export default InputMakrab;
+export default InputMagang;

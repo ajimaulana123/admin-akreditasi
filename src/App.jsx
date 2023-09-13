@@ -53,6 +53,9 @@ import SaranaPrasarana from "./pages/data/sarana/saranaPrasarana";
 import InputKurikulums from "./pages/input/jurusan/inputKurikulum";
 import InputMakrab from "./pages/input/mahasiswa/inputMakrab";
 import DocInputAkreditasi from "./pages/doc/docInputAkreditasi";
+import InputMagang from "./pages/input/mahasiswa/inputMagang";
+import InputSosialisasi from "./pages/input/mahasiswa/inputSosialisasi";
+import InputSeminar from "./pages/input/mahasiswa/inputSeminar";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -88,6 +91,9 @@ const routes = [
   { path: "/data/sertifikat-documen", element: <SertifikatDocument /> },
   { path: "/data/sertifikat", element: <Sertifikat /> },
   { path: "/input/data/makrab", element: <InputMakrab /> },
+  { path: "/input/data/magang", element: <InputMagang /> },
+  { path: "/input/data/sosialisasi", element: <InputSosialisasi /> },
+  { path: "/input/data/seminar", element: <InputSeminar /> },
   { path: "/input/data/kurikulum", element: <InputKurikulums /> },
   { path: "/input/data/bpk", element: <InputBpk /> },
   { path: "/input/data/rps", element: <InputRps /> },

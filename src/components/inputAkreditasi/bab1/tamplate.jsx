@@ -28,7 +28,7 @@ import {
   useColorMode,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import {
   useDeleteData,
@@ -62,6 +62,7 @@ const TamplateAkreditasi = ({ endpoint, title }) => {
       : `https://${values.link}`;
     setIsSubmitting(true);
     try {
+      console.log(values);
       await postData(apiUrl, values);
       showSuccessToast("Data Telah Ditambahkan");
     } catch (error) {

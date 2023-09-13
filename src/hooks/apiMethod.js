@@ -24,9 +24,9 @@ export const useGetData = (url) => {
 };
 
 export const usePostData = () => {
-  const postData = async (url, values) => {
+  const postData = async (url, values, option) => {
     try {
-      const response = await axios.post(url, values);
+      const response = await axios.post(url, values, option);
       return response.data;
     } catch (error) {
       console.error("Error posting data:", error);
@@ -52,15 +52,19 @@ export const usePutData = () => {
 };
 
 export const useDeleteData = () => {
+  const [isDeleting, setIsDeleting] = useState(false)
   const deleteData = async (url, id) => {
+    setIsDeleting(true)
     try {
       const response = await axios.delete(`${url}/${id}`);
       return response.data;
     } catch (error) {
       console.error("Error deleting data:", error);
       throw error;
+    } finally {
+      setIsDeleting(false)
     }
   };
 
-  return { deleteData };
+  return { deleteData, isDeleting };
 };

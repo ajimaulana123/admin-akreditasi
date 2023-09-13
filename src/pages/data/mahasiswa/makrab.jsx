@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Sidebar from "../../../layout/sidebar";
 import { BsFillCalendarDateFill } from "react-icons/bs";
-import { Box, Button, Divider, Flex, Image, useColorMode } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Image, Text, useColorMode } from "@chakra-ui/react";
+import { useGetData } from "../../../hooks/apiMethod";
 
 const imageYearData = {
   2022: [
@@ -27,8 +28,18 @@ const imageYearData = {
 };
 
 const Makrab = () => {
-  const [year, setYear] = useState(2022);
+  const currentYear = new Date().getFullYear();
+  const startYear = 2021;
+
+  const yearsArray = Array.from(
+    { length: currentYear - startYear + 1 },
+    (_, index) => startYear + index
+  );
+
+  const [year, setYear] = useState(2021);
+  const apiUrl = `https://akreditasi-mi-api.vercel.app/api/makrab/${year}`;
   const breadcrumbs = ["Data Table", "Doc Mahasiswa", "Makrab"];
+  const {datas, isLoading} = useGetData(apiUrl)
   const {colorMode} = useColorMode()
 
   return (
@@ -45,20 +56,16 @@ const Makrab = () => {
             <BsFillCalendarDateFill className="text-brandTabs-300" /> Tahun :{" "}
           </h2>
           <Box className="mt-2 flex gap-3">
-            <Button
-              onClick={() => setYear(2022)}
-              className="bg-brandTabs-300 hover:bg-brandTabs-300  text-brandTabs-100"
-              size="sm"
-            >
-              2022
-            </Button>
-            <Button
-              onClick={() => setYear(2021)}
-              className="bg-brandTabs-300 hover:bg-brandTabs-300  text-brandTabs-100"
-              size="sm"
-            >
-              2021
-            </Button>
+            {yearsArray.map((year, index) => (
+              <Button
+                key={index}
+                colorScheme="blue"
+                onClick={() => setYear(year)}
+                size="sm"
+              >
+                {year}
+              </Button>
+            ))}
           </Box>
         </Box>
         <Box
@@ -73,17 +80,24 @@ const Makrab = () => {
           </Box>
           <Divider />
           <Box className="px-10 py-5 grid xl:grid-cols-2 gap-2">
-            {imageYearData[year].map((image, index) => {
-              console.log(image);
-              return (
-                <Image
+            {isLoading ? (
+              <Text>Loading...</Text>
+            ) : datas?.dataLength > 0 ? (
+              datas.data.map((image, index) => (
+                <Box
                   key={index}
-                  className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
-                  src={image.src}
-                  alt={image.alt}
-                />
-              );
-            })}
+                  className="overflow-hidden group rounded-xl"
+                >
+                  <Image
+                    className="aspect-video w-full object-cover rounded-xl border border-brandTabs-300 shadow-md"
+                    src={image.url}
+                    alt={image.filename}
+                  />
+                </Box>
+              ))
+            ) : (
+              <Text>Belum Ada Data</Text>
+            )}
           </Box>
         </Box>
       </Flex>
