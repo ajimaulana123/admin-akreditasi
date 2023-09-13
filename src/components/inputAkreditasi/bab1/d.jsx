@@ -38,11 +38,7 @@ const D = () => {
         </Text>
         <AccordionPanel
           pb={3}
-          className={`flex flex-col gap-2 ${
-            colorMode === "dark"
-              ? "bg--900"
-              : "bg-secondaryGray-300"
-          }`}
+          className={`flex flex-col gap-2`}
         >
           {DataD.map((data, index) => (
             <DTamplate
