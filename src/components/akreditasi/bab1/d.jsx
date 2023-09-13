@@ -25,7 +25,7 @@ const D = () => {
     <Accordion allowMultiple defaultIndex={[0]}>
       <AccordionItem
         className={`${
-          colorMode === "dark" ? "bg-brandTabs-900" : "bg-secondaryGray-300"
+          colorMode === "dark" ? "bg-brandTabs-900" : "bg-white"
         } border-none rounded-xl p-3`}
       >
         <Text>
