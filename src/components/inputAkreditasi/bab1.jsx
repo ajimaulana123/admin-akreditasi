@@ -9,9 +9,7 @@ import {
   useColorMode,
 } from "@chakra-ui/react";
 import React from "react";
-import C from "./bab1/c";
 import TamplateAkreditasi from "./bab1/tamplate";
-import D from "./bab1/d";
 
 const Bab1 = () => {
   const { colorMode } = useColorMode();
@@ -25,24 +23,23 @@ const Bab1 = () => {
         <Text>
           <AccordionButton className="text-xl py-3">
             <Box as="span" flex="1" textAlign="left">
-              Bab 1 Elemen Akreditasi
+              BAB 1 PENDAHULUAN
             </Box>
             <AccordionIcon />
           </AccordionButton>
         </Text>
         <AccordionPanel pb={3} className="flex flex-col gap-2">
-          <TamplateAkreditasi endpoint={"a"} title={"A. Kondisi Ekternal"} />
           <TamplateAkreditasi
-            endpoint={"b"}
-            title={"B. Profit Unit Pengelola Program Studi"}
+            endpoint={"bab1-a"}
+            title={"A. Dasar Penyususan"}
           />
-          <C />
-          <D />
           <TamplateAkreditasi
-            endpoint={"e"}
-            title={
-              "E. Analisis dan Penetapan Program Pengembangan Unit Pengelola"
-            }
+            endpoint={"bab1-b"}
+            title={"B. Tim Penyususn Dan Tanggungjawabnya"}
+          />
+          <TamplateAkreditasi
+            endpoint={"bab1-c"}
+            title={"C. Mekanisme Kerja Penyusunan Evaluasi Diri"}
           />
         </AccordionPanel>
       </AccordionItem>
