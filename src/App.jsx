@@ -37,7 +37,7 @@ import InputHaki from "./pages/input/lppm/inputHaki";
 import InputRoadmap from "./pages/input/lppm/inputRoadmap";
 import InputPedoman from "./pages/input/lppm/inputPedoman";
 import InputRenstra from "./pages/input/lppm/inputRenstra";
-import InputAkreditasi from "./pages/input/akreditasi/inputAkreditasi";
+import InputLed from "./pages/input/akreditasi/inputLed";
 import InputFormulir from "./pages/input/mutu/inputFormulir";
 import InputKebijakan from "./pages/input/mutu/inputKebijakan";
 import InputStandar from "./pages/input/mutu/inputStandar";
@@ -56,6 +56,7 @@ import DocInputAkreditasi from "./pages/doc/docInputAkreditasi";
 import InputMagang from "./pages/input/mahasiswa/inputMagang";
 import InputSosialisasi from "./pages/input/mahasiswa/inputSosialisasi";
 import InputSeminar from "./pages/input/mahasiswa/inputSeminar";
+import InputLkps from "./pages/input/akreditasi/inputLkps";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -105,7 +106,8 @@ const routes = [
   { path: "/input/data/roadmap", element: <InputRoadmap /> },
   { path: "/input/data/pedoman", element: <InputPedoman /> },
   { path: "/input/data/renstra", element: <InputRenstra /> },
-  { path: "/input/data/akreditasi", element: <InputAkreditasi /> },
+  { path: "/input/data/led", element: <InputLed /> },
+  { path: "/input/data/lkps", element: <InputLkps /> },
   { path: "/input/data/formulir", element: <InputFormulir /> },
   { path: "/input/data/kebijakan", element: <InputKebijakan /> },
   { path: "/input/data/standar", element: <InputStandar /> },

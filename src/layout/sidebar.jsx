@@ -210,9 +210,14 @@ const menuItems = [
         ],
       },
       {
-        text: "Akreditasi",
+        text: "LED",
         icon: BsFiletypeDoc,
-        path: "/input/data/akreditasi",
+        path: "/input/data/led",
+      },
+      {
+        text: "LKPS",
+        icon: BsFiletypeDoc,
+        path: "/input/data/lkps",
       },
       { text: "Sarana Prasarana", icon: BsFillLightbulbFill },
       { text: "Informasi Dosen", icon: BsInfoSquareFill },

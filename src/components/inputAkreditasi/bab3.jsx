@@ -29,7 +29,7 @@ const Bab3 = () => {
           </AccordionButton>
         </Text>
         <AccordionPanel pb={3} className="flex flex-col gap-2">
-          <TamplateAkreditasi endpoint={"bab2"} title={"Format Penilaian"} />
+          <TamplateAkreditasi endpoint={"bab1-a"} title={"Format Penilaian"} />
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
