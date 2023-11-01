@@ -34,7 +34,7 @@ const Bab2 = () => {
           <TamplateAkreditasi endpoint={"a"} title={"A. Kondisi Ekternal"} />
           <TamplateAkreditasi
             endpoint={"b"}
-            title={"B. Profit Unit Pengelola Program Studi"}
+            title={"B. Profil Unit Pengelola Program Studi"}
           />
           <C />
           <D />
