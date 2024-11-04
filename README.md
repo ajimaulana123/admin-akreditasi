@@ -5,3 +5,5 @@ Selamat datang di repositori proyek Sistem Admin Akreditasi Jurusan Manajemen In
 ## Tentang Proyek
 
 Sistem ini dirancang untuk membantu dalam pengumpulan, penyimpanan, dan analisis data akreditasi yang diperlukan untuk menjaga standar pendidikan dan kualitas jurusan. Dengan sistem ini, diharapkan proses akreditasi dapat berjalan lebih lancar dan transparan.
+
+# OPEN SOURCE ADMIN hemhe
